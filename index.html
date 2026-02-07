@@ -1,0 +1,1190 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaymassama | Photographie & Vidéographie</title>
+ 
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2"> 
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+    <meta property="og:image" content="https://siltdo9-wq.github.io/IMG_6150.jpg">
+    <style>
+        :root {
+            --sky-blue: #B8E3F0;
+            --deep-blue: #1E5F8E;
+            --cloud-white: #FFFFFF;
+            --soft-blue: #E1F4F8;
+            --accent-blue: #4A90B8;
+            --text-dark: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(180deg, #D4F1F9 0%, #B8E3F0 50%, #A8D8EA 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes drift {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(100vw); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Nuages décoratifs */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+            opacity: 0.9;
+            filter: blur(1px);
+            z-index: 0;
+        }
+
+        .cloud::before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+        }
+
+        .cloud1 {
+            width: 120px;
+            height: 40px;
+            top: 10%;
+            animation: drift 25s infinite linear;
+        }
+
+        .cloud1::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 15px;
+        }
+
+        .cloud2 {
+            width: 100px;
+            height: 35px;
+            top: 25%;
+            animation: drift 30s infinite linear;
+            animation-delay: -10s;
+        }
+
+        .cloud2::before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 20px;
+        }
+
+        .cloud3 {
+            width: 140px;
+            height: 45px;
+            top: 60%;
+            animation: drift 35s infinite linear;
+            animation-delay: -5s;
+        }
+
+        .cloud3::before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 30px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(30, 95, 142, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-blue);
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--deep-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-services {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .service-tag {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(30, 95, 142, 0.15);
+            color: var(--deep-blue);
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-tag:hover {
+            transform: translateY(-5px);
+        }
+
+        .ring-icon {
+            color: var(--deep-blue);
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: var(--deep-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 95, 142, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 95, 142, 0.4);
+        }
+
+        /* Sections générales */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '☁️';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* Prestations */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(30, 95, 142, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--deep-blue));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 95, 142, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--deep-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Tarifs */
+        .pricing-section {
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.6) 100%);
+            border-radius: 30px;
+            margin: 2rem auto;
+            padding: 4rem 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(30, 95, 142, 0.1);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--deep-blue);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(30, 95, 142, 0.2);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Populaire';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--deep-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--soft-blue);
+        }
+
+        .pricing-title {
+            color: var(--deep-blue);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(184, 227, 240, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-tag {
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .photo-pack {
+            background: var(--soft-blue);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .price-note {
+            font-size: 0.7rem;
+            color: var(--accent-blue);
+            display: block;
+            font-weight: normal;
+        }
+
+        /* Formulaire de commande */
+        .order-section {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(30, 95, 142, 0.15);
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: var(--deep-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            padding: 1rem;
+            border: 2px solid var(--soft-blue);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.9);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--deep-blue);
+            box-shadow: 0 0 0 3px rgba(30, 95, 142, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            background: var(--soft-blue);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .radio-label:hover {
+            background: var(--sky-blue);
+        }
+
+        input[type="radio"] {
+            accent-color: var(--deep-blue);
+        }
+
+        .submit-btn {
+            background: var(--deep-blue);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(30, 95, 142, 0.3);
+        }
+
+        /* Contact & Réseaux */
+        .contact-section {
+            text-align: center;
+            background: rgba(255,255,255,0.4);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--deep-blue);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+        }
+
+        .social-btn.youtube {
+            background: #FF0000;
+            color: white;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .phone-number {
+            font-size: 2rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(30, 95, 142, 0.2);
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--deep-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .footer-location {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Estimation en temps réel */
+        .estimate-box {
+            background: var(--soft-blue);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border: 2px dashed var(--accent-blue);
+        }
+
+        .estimate-price {
+            font-size: 2rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .highlight-price {
+            color: #e74c3c;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+  
+    <!-- Nuages animés -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cloud"></i>
+                Chaymassama
+            </a>
+            <ul class="nav-links">
+                <li><a href="#prestations">Prestations</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#commander">Commander</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Chaymassama</h1>
+            <p class="hero-subtitle">Photographie & Vidéographie Artistique</p>
+            
+            <div class="hero-services">
+                <div class="service-tag">
+                    <i class="fas fa-ring ring-icon"></i> Mariages
+                </div>
+                <div class="service-tag">
+                    <i class="fas fa-running"></i> Sport
+                </div>
+                <div class="service-tag">
+                    <i class="fas fa-glass-cheers"></i> Fêtes & Soirées
+                </div>
+                <div class="service-tag">
+                    <i class="fas fa-video"></i> Montage Intégré
+                </div>
+            </div>
+
+            <p style="font-size: 1.2rem; color: var(--text-dark); max-width: 600px; margin: 2rem auto; line-height: 1.6;">
+                Capturez vos moments précieux avec une touche de rêve. <br>
+                Photos et vidéos professionnelles avec montage inclus.
+            </p>
+
+            <a href="#commander" class="cta-button">Demander un Devis</a>
+        </div>
+    </section>
+
+    <!-- Prestations -->
+    <section id="prestations">
+        <h2 class="section-title">Nos Prestations</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Photographie</h3>
+                <p>Des clichés uniques et naturels pour immortaliser vos événements les plus précieux.</p>
+                <ul class="features-list">
+                    <li>Photos HD retouchées</li>
+                    <li>Galerie privée en ligne</li>
+                    <li>Livraison rapide 48h-7 jours</li>
+                    <li>Droits d'utilisation inclus</li>
+                    <li>À partir de 4€/photo en pack</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Vidéographie</h3>
+                <p>Des films dynamiques et émotionnels avec montage professionnel intégré.</p>
+                <ul class="features-list">
+                    <li>Captation multi-caméras</li>
+                    <li>Montage colorimétrie inclus</li>
+                    <li>Musique libre de droits</li>
+                    <li>Format 4K disponible</li>
+                    <li>Drone sur demande</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Pack Complet</h3>
+                <p>Combinez photo et vidéo pour une couverture totale de votre événement.</p>
+                <ul class="features-list">
+                    <li>Photographe + Vidéaste</li>
+                    <li>Coordination parfaite</li>
+                    <li>Teaser réseaux sociaux offert</li>
+                    <li>Album photo + Film long</li>
+                    <li>Remise spéciale pack</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section id="tarifs" class="pricing-section">
+        <h2 class="section-title">Nos Tarifs</h2>
+        <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-size: 1.1rem;">
+            Des prix transparents basés sur le temps de déplacement et de shooting
+        </p>
+
+        <div class="pricing-grid">
+            <!-- Formule Photo -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Formule Photo</h3>
+                    <div class="price">150€<span class="price-unit">/demi-journée</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <span>Pack 10 photos</span>
+                        <span class="price-tag">50€</span>
+                    </li>
+                    <li>
+                        <span>Pack 25 photos</span>
+                        <span class="price-tag">100€</span>
+                    </li>
+                    <li>
+                        <span>Pack 50 photos</span>
+                        <span class="price-tag">200€</span>
+                    </li>
+                    <li>
+                        <span>Photo supplémentaire</span>
+                        <span class="photo-pack">4€/photo</span>
+                    </li>
+                    <li>
+                        <span>Déplacement (30 min)</span>
+                        <span class="price-tag">+15€</span>
+                    </li>
+                    <li>
+                        <span>Déplacement (1 h)</span>
+                        <span class="price-tag">+30€</span>
+                    </li>
+                </ul>
+                <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
+                    <i class="fas fa-info-circle"></i> Retouches incluses, livraison numérique HD
+                </p>
+            </div>
+
+            <!-- Formule Vidéo -->
+            <div class="pricing-card featured">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Formule Vidéo</h3>
+                    <div class="price">2000€<span class="price-unit">minimum</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <span>Teaser (1-2 min)</span>
+                        <span class="price-tag">2000€</span>
+                    </li>
+                    <li>
+                        <span>Film court (5 min)</span>
+                        <span class="price-tag">2500€</span>
+                    </li>
+                    <li>
+                        <span>Film long (15-20 min)</span>
+                        <span class="price-tag">3500€</span>
+                    </li>
+                    <li>
+                        <span>Montage inclus</span>
+                        <span class="photo-pack">Inclus</span>
+                    </li>
+                    <li>
+                        <span>Déplacement (30 min)</span>
+                        <span class="price-tag">+15€</span>
+                    </li>
+                    <li>
+                        <span>Déplacement (1 h)</span>
+                        <span class="price-tag">+30€</span>
+                    </li>
+                </ul>
+                <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
+                    <i class="fas fa-info-circle"></i> Montage professionnel, étalonnage, sound design
+                </p>
+            </div>
+
+            <!-- Mariages & Événements -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-title">Mariages & Events</h3>
+                    <div class="price">Sur devis</div>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <span>Cérémonie seule</span>
+                        <span class="price-tag">800€</span>
+                    </li>
+                    <li>
+                        <span>Journée complète</span>
+                        <span class="price-tag">2000€</span>
+                    </li>
+                    <li>
+                        <span>Photo + Vidéo</span>
+                        <span class="price-tag">4000€</span>
+                    </li>
+                    <li>
+                        <span>Livre photo</span>
+                        <span class="price-tag">+150€</span>
+                    </li>
+                    <li>
+                        <span>Drone aérien</span>
+                        <span class="price-tag">+200€</span>
+                    </li>
+                    <li>
+                        <span>2<sup>e</sup> photographe</span>
+                        <span class="price-tag highlight-price">600€</span>
+                    </li>
+                </ul>
+                <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
+                    <i class="fas fa-gift"></i> Forfait sur mesure selon vos besoins
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.6); border-radius: 20px;">
+            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">💡 Bon à savoir</h3>
+            <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                Les tarifs incluent le temps de déplacement dans un rayon de 15 km. Au-delà, 
+                les frais sont calculés à 0,50€/km. Le montage vidéo est toujours inclus dans nos forfaits 
+                (dérushage, étalonnage, sound design). Pour les événements sportifs et soirées, 
+                consultez nos packs spéciaux avec livraison express sous 48 h.
+            </p>
+        </div>
+    </section>
+
+    <!-- Formulaire de commande -->
+    <section id="commander" class="order-section">
+        <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
+        <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
+            Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé sous 24 h.
+        </p>
+
+        <form id="bookingForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Nom & Prénom</label>
+                    <input type="text" id="name" name="name" required placeholder="Votre nom">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="04 86 77 91 96" value="04 86 77 91 96">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date de l'événement</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Type de prestation</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="type" value="photo" checked>
+                            <span>Photo uniquement</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="type" value="video">
+                            <span>Vidéo uniquement</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="type" value="both">
+                            <span>Photo + Vidéo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Durée du shooting</label>
+                    <select id="duration" name="duration" onchange="calculateEstimate()">
+                        <option value="2">2 heures</option>
+                        <option value="4" selected>4 heures (1/2 journée)</option>
+                        <option value="6">6 heures</option>
+                        <option value="8">8 heures (Journée)</option>
+                        <option value="12">12 heures (Mariage complet)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="travel">Temps de déplacement</label>
+                    <select id="travel" name="travel" onchange="calculateEstimate()">
+                        <option value="0">Moins de 15 min (inclus)</option>
+                        <option value="15">30 minutes (+15€)</option>
+                        <option value="30">1 heure (+30€)</option>
+                        <option value="60">1 h 30 (+45€)</option>
+                        <option value="90">2 heures (+60€)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="details">Détails de votre projet</label>
+                    <textarea id="details" name="details" rows="4" placeholder="Décrivez votre événement, le lieu, vos attentes particulières..."></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <div class="estimate-box">
+                        <p>Estimation du devis :</p>
+                        <div class="estimate-price" id="estimatePrice">150€ - 300€</div>
+                        <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
+                            * Prix indicatif, devis final sous 24 h
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Contact & Partenariats -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact & Partenariats</h2>
+        
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6;">
+            Vous êtes une entreprise, un influenceur ou souhaitez collaborer ? 
+            Je suis ouvert à tous les partenariats créatifs.
+        </p>
+
+        <div class="social-links">
+            <a href="mailto:Chaymassama@gmail.com" class="social-btn" style="background: #EA4335; color: white;">
+                <i class="fas fa-envelope"></i>
+                Chaymassama@gmail.com
+            </a>
+            
+            <a href="https://instagram.com/Chaymassama" target="_blank" class="social-btn instagram">
+                <i class="fab fa-instagram"></i>
+                @Chaymassama
+            </a>
+            
+            <a href="https://youtube.com/@Chaymassama" target="_blank" class="social-btn youtube">
+                <i class="fab fa-youtube"></i>
+                Chaymassama
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <p style="margin-bottom: 0.5rem;">
+                <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
+                Pour toute collaboration ou partenariat :
+            </p>
+            <div class="phone-number">
+                <i class="fas fa-phone-alt"></i> 04 86 77 91 96
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">📍 Zone d'intervention</h3>
+            <p>Disponible en Belgique et à l'international</p>
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i> Basé en Belgique
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-cloud"></i> Chaymassama
+            </div>
+            <p>Photographie & Vidéographie avec passion depuis 2020</p>
+            
+            <div class="footer-location">
+                <i class="fas fa-map-marker-alt"></i> 
+                <strong>Belgique</strong> - Déplacements possibles partout en Europe
+            </div>
+            
+            <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">
+                © 2024 Chaymassama - Tous droits réservés | 
+                <a href="#" style="color: white;">Mentions légales</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Calcul de l'estimation en temps réel
+        function calculateEstimate() {
+            const type = document.querySelector('input[name="type"]:checked').value;
+            const duration = parseInt(document.getElementById('duration').value);
+            const travel = parseInt(document.getElementById('travel').value);
+            
+            let basePrice = 0;
+            let travelCost = travel * 1; // 1€ par minute de déplacement (approx)
+            
+            if (type === 'photo') {
+                basePrice = duration * 37.5; // 150€ pour 4h = 37.5€/h
+            } else if (type === 'video') {
+                // Minimum 2000€ pour vidéo
+                basePrice = Math.max(2000, duration * 75);
+            } else {
+                basePrice = Math.max(2000, duration * 100); // Pack photo+video
+            }
+            
+            const minPrice = Math.floor(basePrice + travelCost);
+            const maxPrice = Math.floor(basePrice * 1.3 + travelCost);
+            
+            document.getElementById('estimatePrice').textContent = 
+                minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
+        }
+
+        // Mettre à jour quand on change le type
+        document.querySelectorAll('input[name="type"]').forEach(radio => {
+            radio.addEventListener('change', calculateEstimate);
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = "fadeInUp 0.8s ease-out forwards";
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes
+        document.querySelectorAll('.service-card, .pricing-card').forEach((el, index) => {
+            el.style.opacity = "0";
+            el.style.animationDelay = `${index * 0.1}s`;
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gestion du formulaire
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre demande ! Je vous contacterai très rapidement au 04 86 77 91 96 ou par email pour confirmer votre devis.');
+        });
+    </script>
+    <script src="./script.js"></script> 
+  </body>
+  </html>
