@@ -22,6 +22,7 @@
             --soft-blue: #E1F4F8;
             --accent-blue: #4A90B8;
             --text-dark: #2C3E50;
+            --gold-accent: #FFD700;
         }
 
         * {
@@ -62,6 +63,11 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
         }
 
         /* Nuages décoratifs */
@@ -644,6 +650,77 @@
             font-weight: 600;
         }
 
+        /* Promotion Banner - Style élégant */
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .promo-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .promo-banner::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .promo-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .promo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #2C3E50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .promo-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+            animation: pulse-glow 2s infinite;
+        }
+
+        .promo-link i {
+            font-size: 1.1rem;
+        }
+
         /* Footer */
         footer {
             background: var(--deep-blue);
@@ -672,6 +749,27 @@
             display: inline-block;
         }
 
+        .footer-support {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .footer-support a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 1px dotted rgba(255, 215, 0, 0.5);
+        }
+
+        .footer-support a:hover {
+            color: #FFA500;
+            border-bottom-style: solid;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -693,6 +791,11 @@
             .social-links {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .promo-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -773,23 +876,6 @@
         </div>
     </section>
 
-<!-- Bannière Freecash juste après le Hero -->
-    <div class="promo-banner">
-        <div class="promo-content">
-            <span class="promo-text">
-                <i class="fas fa-gift" style="color: #FFD700;"></i> 
-                Vous appréciez mon travail ? 
-            </span>
-            <a href="https://freecash.com/r/chaymassama" target="_blank" class="promo-link" rel="noopener noreferrer">
-                <i class="fas fa-coins"></i>
-                Me soutenir via Freecash
-            </a>
-        </div>
-        <p style="font-size: 0.8rem; color: var(--accent-blue); margin-top: 0.8rem; font-style: italic;">
-            Gagnez des récompenses en testant des apps et soutenez mon activité créative gratuitement
-        </p>
-    </div>
- 
     <!-- Prestations -->
     <section id="prestations">
         <h2 class="section-title">Nos Prestations</h2>
@@ -1065,7 +1151,8 @@
             </div>
         </form>
     </section>
- <!-- Bannière Freecash après le formulaire de commande -->
+
+    <!-- Bannière Promotion Freecash - Intégration élégante -->
     <div class="promo-banner">
         <div class="promo-content">
             <span class="promo-text">
@@ -1128,7 +1215,7 @@
     </section>
 
     <!-- Footer -->
-  <footer>
+    <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <i class="fas fa-cloud"></i> Chaymassama
@@ -1147,6 +1234,7 @@
                     freecash.com/r/chaymassama
                 </a>
             </div>
+            
             <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">
                 © 2024 Chaymassama - Tous droits réservés | 
                 <a href="#" style="color: white;">Mentions légales</a>
