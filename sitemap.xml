@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <!-- Page d'accueil -->
+   <url>
+      <loc>https://chaymassama.be/</loc>
+   </url>
+
+   <!-- Pages principales -->
+   <url>
+      <loc>https://chaymassama.be/about.html</loc>
+   </url>
+   <url>
+      <loc>https://chaymassama.be/contact.html</loc>
+   </url>
+   <url>
+      <loc>https://chaymassama.be/portfolio.html</loc>
+   </url>
+   <url>
+      <loc>https://chaymassama.be/blog.html</loc>
+   </url>
+
+   <!-- Exemples de posts de blog -->
+   <url>
+      <loc>https://chaymassama.be/blog/post1.html</loc>
+   </url>
+   <url>
+      <loc>https://chaymassama.be/blog/post2.html</loc>
+   </url>
+   <url>
+      <loc>https://chaymassama.be/blog/post3.html</loc>
+   </url>
+
+</urlset>
