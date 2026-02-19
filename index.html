@@ -385,7 +385,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -407,7 +407,7 @@
         }
 
         .pricing-card.featured::before {
-            content: 'Populaire';
+            content: 'Recommandé';
             position: absolute;
             top: -12px;
             right: 20px;
@@ -820,52 +820,98 @@
             color: #e74c3c;
             font-size: 1.1em;
         }
-/* --- Footer doré Freecash --- */
-footer.freecash-footer {
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    padding: 3rem 1rem;
-}
 
-footer.freecash-footer .footer-box {
-    background: rgba(255, 223, 0, 0.1); /* doré léger */
-    border: 2px solid #FFD700;          /* bord doré */
-    border-radius: 20px;
-    padding: 2rem 3rem;
-    max-width: 600px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
-}
+        /* Info box for video pricing */
+        .info-box {
+            background: linear-gradient(135deg, rgba(30, 95, 142, 0.05) 0%, rgba(74, 144, 184, 0.1) 100%);
+            border-left: 4px solid var(--deep-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+        }
 
-footer.freecash-footer .footer-brand {
-    font-size: 1.2rem;
-    font-weight: 700;
-}
+        .info-box h4 {
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-footer.freecash-footer p {
-    margin: 0.3rem 0;
-    font-size: 0.95rem;
-    color: var(--deep-blue);
-}
+        .info-box p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
 
-footer.freecash-footer a.freecash-btn {
-    display: inline-block;
-    margin: 0.5rem 0;
-    padding: 0.8rem 1.5rem;
-    background: #FFD700;
-    color: var(--deep-blue);
-    font-weight: 700;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.3s;
-}
+        /* --- Footer doré Freecash --- */
+        footer.freecash-footer {
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            padding: 3rem 1rem;
+        }
 
-footer.freecash-footer a.freecash-btn:hover {
-    background: #FFC107;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-}
+        footer.freecash-footer .footer-box {
+            background: rgba(255, 223, 0, 0.1); /* doré léger */
+            border: 2px solid #FFD700;          /* bord doré */
+            border-radius: 20px;
+            padding: 2rem 3rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        footer.freecash-footer .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        footer.freecash-footer p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            color: var(--deep-blue);
+        }
+
+        footer.freecash-footer a.freecash-btn {
+            display: inline-block;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1.5rem;
+            background: #FFD700;
+            color: var(--deep-blue);
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        footer.freecash-footer a.freecash-btn:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Video pricing tiers */
+        .video-tier {
+            background: rgba(255,255,255,0.5);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .video-tier.simple {
+            border-left-color: #27ae60;
+        }
+
+        .video-tier.complex {
+            border-left-color: #e67e22;
+        }
+
+        .video-tier.premium {
+            border-left-color: var(--deep-blue);
+        }
     </style>
 </head>
 <body>
@@ -953,7 +999,7 @@ footer.freecash-footer a.freecash-btn:hover {
                     <li>Montage colorimétrie inclus</li>
                     <li>Musique libre de droits</li>
                     <li>Format 4K disponible</li>
-                    <li>Drone sur demande</li>
+                    <li>Tarifs basés sur 50€/heure de travail</li>
                 </ul>
             </div>
 
@@ -982,7 +1028,7 @@ footer.freecash-footer a.freecash-btn:hover {
         </p>
 
         <div class="pricing-grid">
-            <!-- Formule Photo -->
+            <!-- Formule Photo - INCHANGÉE -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Photo</h3>
@@ -1019,27 +1065,50 @@ footer.freecash-footer a.freecash-btn:hover {
                 </p>
             </div>
 
-            <!-- Formule Vidéo -->
+            <!-- Formule Vidéo - NOUVEAUX PRIX -->
             <div class="pricing-card featured">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Vidéo</h3>
-                    <div class="price">2000€<span class="price-unit">minimum</span></div>
+                    <div class="price">300€<span class="price-unit">à partir de</span></div>
                 </div>
-                <ul class="pricing-features">
+                
+                <div class="video-tier simple">
+                    <strong>2h Tournage + Montage</strong><br>
+                    <span style="color: #27ae60; font-weight: 600;">300€ - 500€</span><br>
+                    <small>• Reel Instagram basique: 300-350€<br>
+                    • Color grading & storytelling: 400-500€</small>
+                </div>
+
+                <div class="video-tier complex">
+                    <strong>4h Tournage + Montage</strong><br>
+                    <span style="color: #e67e22; font-weight: 600;">500€ - 900€</span><br>
+                    <small>• 6-10h de montage • 1 à 3 vidéos finales<br>
+                    • 500-650€ particulier • 700-900€ entreprise</small>
+                </div>
+
+                <div class="video-tier premium">
+                    <strong>8h Tournage + Montage</strong><br>
+                    <span style="color: var(--deep-blue); font-weight: 600;">900€ - 1800€</span><br>
+                    <small>• Journée complète • Gros volume de rush<br>
+                    • 1 vidéo principale + reels éventuels</small>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> Règle d'or</h4>
+                    <p>Basé sur <strong>50€/heure de travail réel</strong>. Une journée de tournage + montage représente souvent 2 à 3 jours de travail. Je me positionne comme professionnel en 2026, pas comme étudiant.</p>
+                </div>
+
+                <ul class="pricing-features" style="margin-top: 1rem;">
                     <li>
-                        <span>Teaser (1-2 min)</span>
-                        <span class="price-tag">2000€</span>
+                        <span>Montage professionnel</span>
+                        <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
-                        <span>Film court (5 min)</span>
-                        <span class="price-tag">2500€</span>
+                        <span>Étalonnage colorimétrique</span>
+                        <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
-                        <span>Film long (15-20 min)</span>
-                        <span class="price-tag">3500€</span>
-                    </li>
-                    <li>
-                        <span>Montage inclus</span>
+                        <span>Sound design</span>
                         <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
@@ -1051,12 +1120,9 @@ footer.freecash-footer a.freecash-btn:hover {
                         <span class="price-tag">+30€</span>
                     </li>
                 </ul>
-                <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
-                    <i class="fas fa-info-circle"></i> Montage professionnel, étalonnage, sound design
-                </p>
             </div>
 
-            <!-- Mariages & Événements -->
+            <!-- Mariages & Événements - AJUSTÉ -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Mariages & Events</h3>
@@ -1064,11 +1130,11 @@ footer.freecash-footer a.freecash-btn:hover {
                 </div>
                 <ul class="pricing-features">
                     <li>
-                        <span>Cérémonie seule</span>
+                        <span>Cérémonie seule (2-4h)</span>
                         <span class="price-tag">800€</span>
                     </li>
                     <li>
-                        <span>Journée complète</span>
+                        <span>Journée complète (8h+)</span>
                         <span class="price-tag">2000€</span>
                     </li>
                     <li>
@@ -1095,12 +1161,13 @@ footer.freecash-footer a.freecash-btn:hover {
         </div>
 
         <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.6); border-radius: 20px;">
-            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">💡 Bon à savoir</h3>
+            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">💡 Pourquoi ces tarifs vidéo ?</h3>
             <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                Les tarifs incluent le temps de déplacement dans un rayon de 15 km. Au-delà, 
-                les frais sont calculés à 0,50€/km. Le montage vidéo est toujours inclus dans nos forfaits 
-                (dérushage, étalonnage, sound design). Pour les événements sportifs et soirées, 
-                consultez nos packs spéciaux avec livraison express sous 48 h.
+                <strong>2h de tournage = 3-6h de montage</strong> (reel/vidéo courte)<br>
+                <strong>4h de tournage = 6-10h de montage</strong> (1 à 3 vidéos finales)<br>
+                <strong>8h de tournage = 2-3 jours de travail réel</strong> (vidéo principale + contenus)<br><br>
+                Facturer moins de 900€ pour une journée complète + montage revient à travailler presque gratuitement. 
+                Pour vivre de ma passion en 2026, je dois me positionner comme un professionnel, pas comme un étudiant en job d'été.
             </p>
         </div>
     </section>
@@ -1175,6 +1242,15 @@ footer.freecash-footer a.freecash-btn:hover {
                 </div>
 
                 <div class="form-group full-width">
+                    <label for="complexity">Niveau de montage (Vidéo uniquement)</label>
+                    <select id="complexity" name="complexity" onchange="calculateEstimate()">
+                        <option value="simple">Simple (Reel Instagram basique)</option>
+                        <option value="standard" selected>Standard (Color grading, transitions propres)</option>
+                        <option value="complexe">Complexe (Storytelling avancé, multi-caméras)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
                     <label for="details">Détails de votre projet</label>
                     <textarea id="details" name="details" rows="4" placeholder="Décrivez votre événement, le lieu, vos attentes particulières..."></textarea>
                 </div>
@@ -1184,7 +1260,7 @@ footer.freecash-footer a.freecash-btn:hover {
                         <p>Estimation du devis :</p>
                         <div class="estimate-price" id="estimatePrice">150€ - 300€</div>
                         <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
-                            * Prix indicatif, devis final sous 24 h
+                            * Prix indicatif basé sur 50€/heure de travail réel, devis final sous 24 h
                         </p>
                     </div>
                 </div>
@@ -1282,6 +1358,7 @@ footer.freecash-footer a.freecash-btn:hover {
             const type = document.querySelector('input[name="type"]:checked').value;
             const duration = parseInt(document.getElementById('duration').value);
             const travel = parseInt(document.getElementById('travel').value);
+            const complexity = document.getElementById('complexity').value;
             
             let basePrice = 0;
             let travelCost = travel * 1; // 1€ par minute de déplacement (approx)
@@ -1289,14 +1366,34 @@ footer.freecash-footer a.freecash-btn:hover {
             if (type === 'photo') {
                 basePrice = duration * 37.5; // 150€ pour 4h = 37.5€/h
             } else if (type === 'video') {
-                // Minimum 2000€ pour vidéo
-                basePrice = Math.max(2000, duration * 75);
+                // Nouvelle grille tarifaire vidéo basée sur 50€/heure de travail réel
+                // Tournage + Montage = temps total
+                let shootingTime = duration;
+                let editingTime;
+                
+                // Calcul du temps de montage selon la durée de tournage
+                if (duration <= 2) {
+                    editingTime = complexity === 'simple' ? 3 : (complexity === 'standard' ? 4 : 6);
+                } else if (duration <= 4) {
+                    editingTime = complexity === 'simple' ? 6 : (complexity === 'standard' ? 8 : 10);
+                } else {
+                    editingTime = complexity === 'simple' ? 10 : (complexity === 'standard' ? 14 : 20);
+                }
+                
+                // Total heures de travail = tournage + montage
+                let totalHours = shootingTime + editingTime;
+                basePrice = totalHours * 50; // 50€ par heure de travail réel
+                
+                // Ajustement selon complexité
+                if (complexity === 'complexe') basePrice *= 1.2;
+                
             } else {
-                basePrice = Math.max(2000, duration * 100); // Pack photo+video
+                // Pack Photo + Vidéo
+                basePrice = Math.max(2000, duration * 100); 
             }
             
             const minPrice = Math.floor(basePrice + travelCost);
-            const maxPrice = Math.floor(basePrice * 1.3 + travelCost);
+            const maxPrice = Math.floor(basePrice * 1.2 + travelCost);
             
             document.getElementById('estimatePrice').textContent = 
                 minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
