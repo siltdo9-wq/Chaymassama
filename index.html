@@ -45,7 +45,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -72,7 +71,6 @@
             50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
         }
 
-        /* Nuages décoratifs */
         .cloud {
             position: absolute;
             background: rgba(255, 255, 255, 0.8);
@@ -133,7 +131,6 @@
             left: 30px;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -193,7 +190,6 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -276,7 +272,6 @@
             box-shadow: 0 6px 20px rgba(30, 95, 142, 0.4);
         }
 
-        /* Sections générales */
         section {
             padding: 5rem 2rem;
             position: relative;
@@ -304,7 +299,6 @@
             font-size: 1.5rem;
         }
 
-        /* Prestations */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -377,7 +371,6 @@
             font-weight: bold;
         }
 
-        /* Tarifs */
         .pricing-section {
             background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.6) 100%);
             border-radius: 30px;
@@ -477,14 +470,6 @@
             font-weight: 700;
         }
 
-        .price-note {
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            display: block;
-            font-weight: normal;
-        }
-
-        /* Formulaire de commande */
         .order-section {
             background: white;
             border-radius: 30px;
@@ -582,7 +567,6 @@
             cursor: not-allowed;
         }
 
-        /* Contact & Réseaux */
         .contact-section {
             text-align: center;
             background: rgba(255,255,255,0.4);
@@ -665,7 +649,6 @@
             font-weight: 600;
         }
 
-        /* Promotion Banner - Style élégant */
         .promo-banner {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
             border: 2px solid rgba(255, 215, 0, 0.3);
@@ -732,11 +715,6 @@
             animation: pulse-glow 2s infinite;
         }
 
-        .promo-link i {
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
         footer {
             background: var(--deep-blue);
             color: white;
@@ -785,7 +763,6 @@
             border-bottom-style: solid;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -814,7 +791,6 @@
             }
         }
 
-        /* Estimation en temps réel */
         .estimate-box {
             background: var(--soft-blue);
             padding: 1.5rem;
@@ -836,7 +812,6 @@
             font-size: 1.1em;
         }
 
-        /* Video pricing tiers */
         .video-tier {
             background: rgba(255,255,255,0.5);
             padding: 1rem;
@@ -857,7 +832,6 @@
             border-left-color: var(--deep-blue);
         }
 
-        /* --- Footer doré Freecash --- */
         footer.freecash-footer {
             background: transparent;
             display: flex;
@@ -866,8 +840,8 @@
         }
 
         footer.freecash-footer .footer-box {
-            background: rgba(255, 223, 0, 0.1); /* doré léger */
-            border: 2px solid #FFD700;          /* bord doré */
+            background: rgba(255, 223, 0, 0.1);
+            border: 2px solid #FFD700;
             border-radius: 20px;
             padding: 2rem 3rem;
             max-width: 600px;
@@ -904,7 +878,6 @@
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
 
-        /* Message de confirmation */
         .success-message {
             display: none;
             background: #d4edda;
@@ -923,13 +896,10 @@
 </head>
 <body>
 
-  
-    <!-- Nuages animés -->
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
     <div class="cloud cloud3"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">
@@ -945,7 +915,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Chaymassama</h1>
@@ -975,29 +944,6 @@
         </div>
     </section>
 
-    <style>
-  /* Style pour la section SEO */
-  .seo-intro {
-    background-color: #ffffff; /* Même fond blanc que le reste du site */
-    color: #0d1b2a; /* Couleur texte bleu foncé similaire aux autres sections */
-    padding: 4rem 2rem; /* Même espacement que les autres sections */
-    border-radius: 20px; /* Si tes autres sections ont des coins arrondis */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Léger ombrage pour homogénéité */
-    margin: 2rem 0;
-  }
-
-  .seo-intro h2 {
-    color: var(--deep-blue); /* Assure la cohérence avec tes titres */
-    margin-bottom: 1.5rem;
-  }
-
-  .seo-intro p {
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-</style>
-
-    <!-- Prestations -->
     <section id="prestations">
         <h2 class="section-title">Nos Prestations</h2>
         
@@ -1049,7 +995,6 @@
         </div>
     </section>
 
-    <!-- Tarifs -->
     <section id="tarifs" class="pricing-section">
         <h2 class="section-title">Nos Tarifs</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-size: 1.1rem;">
@@ -1057,7 +1002,6 @@
         </p>
 
         <div class="pricing-grid">
-            <!-- Formule Photo - INCHANGÉE -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Photo</h3>
@@ -1094,7 +1038,6 @@
                 </p>
             </div>
 
-            <!-- Formule Vidéo - NOUVEAUX PRIX -->
             <div class="pricing-card featured">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Vidéo</h3>
@@ -1146,7 +1089,6 @@
                 </ul>
             </div>
 
-            <!-- Mariages & Événements - AJUSTÉ -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Mariages & Events</h3>
@@ -1185,15 +1127,14 @@
         </div>
     </section>
 
-    <!-- Formulaire de commande - CONNECTÉ À FORMSPREE -->
+    <!-- FORMULAIRE FORMSPREE - FONCTIONNEL -->
     <section id="commander" class="order-section">
         <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
             Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé sous 24 h.
         </p>
 
-        <!-- FORMULAIRE FORMSPREE - Remplacez {FORM_ID} par votre ID réel -->
-        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="bookingForm" action="https://formspree.io/f/xjgeqqqq" method="POST">
             <div class="form-grid">
                 <div class="form-group">
                     <label for="name">Nom & Prénom *</label>
@@ -1207,7 +1148,7 @@
 
                 <div class="form-group">
                     <label for="phone">Téléphone *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="0486 77 91 96" value="0486 77 91 96">
+                    <input type="tel" id="phone" name="phone" required placeholder="0486 77 91 96">
                 </div>
 
                 <div class="form-group">
@@ -1269,10 +1210,7 @@
                     <textarea id="details" name="details" rows="4" placeholder="Décrivez votre événement, le lieu, vos attentes particulières..."></textarea>
                 </div>
 
-                <!-- Champ caché pour l'email de destination (redondance sécurité) -->
                 <input type="hidden" name="_replyto" value="chaymassama@gmail.com">
-                
-                <!-- Champ caché pour le sujet de l'email -->
                 <input type="hidden" name="_subject" value="Nouvelle demande de devis - Chaymassama">
 
                 <div class="form-group full-width">
@@ -1298,20 +1236,9 @@
                 </div>
             </div>
         </form>
-
-        <!-- Instructions pour configurer Formspree -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border: 2px solid #ffc107; border-radius: 15px; font-size: 0.9rem;">
-            <h4 style="color: #856404; margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> Configuration requise :</h4>
-            <p style="color: #856404; line-height: 1.6;">
-                Pour activer l'envoi d'emails, remplacez <code>YOUR_FORM_ID</code> dans le code par votre ID Formspree. 
-                <a href="https://formspree.io/register" target="_blank" style="color: #856404; font-weight: bold; text-decoration: underline;">Créez un compte gratuit sur Formspree</a>, 
-                créez un nouveau formulaire, copiez l'ID (format : xxxxxxxx) et collez-le à la place de YOUR_FORM_ID.
-            </p>
-        </div>
     </section>
 
-    <!-- Bannière Promotion Freecash - Intégration élégante -->
-  <div class="promo-banner">
+    <div class="promo-banner">
         <div class="promo-content">
             <span><i class="fas fa-gift" style="color: #FFD700;"></i> Vous appréciez mon travail ?</span>
             <a href="https://freecash.com/r/chaymassama" target="_blank" class="promo-link" rel="noopener noreferrer">
@@ -1323,7 +1250,6 @@
         </p>
     </div>
 
-    <!-- Contact & Partenariats -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Contact & Partenariats</h2>
         
@@ -1354,7 +1280,6 @@
                 <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
                 Pour toute collaboration ou partenariat :
             </p>
-            <!-- NUMÉRO CLIQUABLE - LIEN TEL: -->
             <a href="tel:+32486779196" class="phone-number" title="Cliquez pour appeler">
                 <i class="fas fa-phone-alt"></i> 0486 77 91 96
             </a>
@@ -1372,38 +1297,26 @@
         </div>
     </section>
 
-<section class="internal-links">
-  <div class="container">
-    <h2>En savoir plus</h2>
-    <p><a href="/portfolio.html">Voir le portfolio</a></p>
-    <p><a href="/about.html">Découvrir notre histoire</a></p>
-    <p><a href="/contact.html">Nous contacter</a></p>
-  </div>
-</section>
-    
-    <!-- Footer -->
     <footer>
-    <div class="footer-box">
-        <div class="footer-brand">
-            <i class="fas fa-cloud"></i> Chaymassama 💛
+        <div class="footer-box">
+            <div class="footer-brand">
+                <i class="fas fa-cloud"></i> Chaymassama 💛
+            </div>
+            <p>Photographie & Vidéographie avec passion depuis 2020</p>
+            <div class="footer-location">
+                <i class="fas fa-map-marker-alt"></i> Belgique - Déplacements possibles partout en Europe
+            </div>
+            <a href="https://freecash.com/r/chaymassama" target="_blank" class="freecash-btn">
+                💛 Soutenir via Freecash
+            </a>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                © 2024 Chaymassama - Tous droits réservés | 
+                <a href="#">Mentions légales</a>
+            </p>
         </div>
-        <p>Photographie & Vidéographie avec passion depuis 2020</p>
-        <div class="footer-location">
-            <i class="fas fa-map-marker-alt"></i> Belgique - Déplacements possibles partout en Europe
-        </div>
-        <a href="https://freecash.com/r/chaymassama" target="_blank" class="freecash-btn">
-            💛 Soutenir via Freecash
-        </a>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-            © 2024 Chaymassama - Tous droits réservés | 
-            <a href="#">Mentions légales</a>
-        </p>
-    </div>
-</footer>
+    </footer>
 
     <script>
-         <script>
-        // Calcul de l'estimation en temps réel
         function calculateEstimate() {
             const type = document.querySelector('input[name="type"]:checked').value;
             const duration = parseInt(document.getElementById('duration').value);
@@ -1493,7 +1406,5 @@
             // Les données seront envoyées à chaymassama@gmail.com
         });
     </script>
-    </script>
-    <script src="./script.js"></script> 
-  </body>
-  </html>
+</body>
+</html>
