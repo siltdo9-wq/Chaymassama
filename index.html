@@ -1402,6 +1402,7 @@
 </footer>
 
     <script>
+         <script>
         // Calcul de l'estimation en temps réel
         function calculateEstimate() {
             const type = document.querySelector('input[name="type"]:checked').value;
@@ -1410,17 +1411,14 @@
             const complexity = document.getElementById('complexity').value;
             
             let basePrice = 0;
-            let travelCost = travel * 1; // 1€ par minute de déplacement (approx)
+            let travelCost = travel * 1;
             
             if (type === 'photo') {
-                basePrice = duration * 37.5; // 150€ pour 4h = 37.5€/h
+                basePrice = duration * 37.5;
             } else if (type === 'video') {
-                // Nouvelle grille tarifaire vidéo basée sur 50€/heure de travail réel
-                // Tournage + Montage = temps total
                 let shootingTime = duration;
                 let editingTime;
                 
-                // Calcul du temps de montage selon la durée de tournage
                 if (duration <= 2) {
                     editingTime = complexity === 'simple' ? 3 : (complexity === 'standard' ? 4 : 6);
                 } else if (duration <= 4) {
@@ -1429,15 +1427,12 @@
                     editingTime = complexity === 'simple' ? 10 : (complexity === 'standard' ? 14 : 20);
                 }
                 
-                // Total heures de travail = tournage + montage
                 let totalHours = shootingTime + editingTime;
-                basePrice = totalHours * 50; // 50€ par heure de travail réel
+                basePrice = totalHours * 50;
                 
-                // Ajustement selon complexité
                 if (complexity === 'complexe') basePrice *= 1.2;
                 
             } else {
-                // Pack Photo + Vidéo
                 basePrice = Math.max(2000, duration * 100); 
             }
             
@@ -1448,12 +1443,10 @@
                 minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
         }
 
-        // Mettre à jour quand on change le type
         document.querySelectorAll('input[name="type"]').forEach(radio => {
             radio.addEventListener('change', calculateEstimate);
         });
 
-        // Animation au scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -100px 0px"
@@ -1467,14 +1460,12 @@
             });
         }, observerOptions);
 
-        // Observer les cartes
         document.querySelectorAll('.service-card, .pricing-card').forEach((el, index) => {
             el.style.opacity = "0";
             el.style.animationDelay = `${index * 0.1}s`;
             observer.observe(el);
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1488,33 +1479,20 @@
             });
         });
 
-        // Gestion du formulaire Formspree
+        // Gestion du formulaire Formspree - https://formspree.io/f/xjgeqqqq
         const form = document.getElementById('bookingForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
 
         form.addEventListener('submit', function(e) {
-            // Si c'est encore YOUR_FORM_ID, afficher une alerte
-            if (form.action.includes('https://formspree.io/f/xjgeqqqq')) {
-                e.preventDefault();
-                alert('⚠️ Configuration requise :\n\nRemplacez YOUR_FORM_ID par votre ID Formspree dans le code HTML.\n\n1. Allez sur https://formspree.io/register\n2. Créez un compte gratuit\n3. Créez un nouveau formulaire\n4. Copiez l\'ID (8 caractères)\n5. Remplacez YOUR_FORM_ID dans le code');
-                return;
-            }
-            
             // Animation de chargement
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
             
-            // Le formulaire va se soumettre normalement à Formspree
-            // qui redirigera vers une page de confirmation
-            // ou vous pouvez gérer la réponse en AJAX ci-dessous
+            // Le formulaire se soumet automatiquement à https://formspree.io/f/xjgeqqqq
+            // Les données seront envoyées à chaymassama@gmail.com
         });
-
-        // Détection du retour de Formspree (si redirection)
-        if (window.location.search.includes('submitted=true')) {
-            successMessage.classList.add('show');
-            form.reset();
-        }
+    </script>
     </script>
     <script src="./script.js"></script> 
   </body>
