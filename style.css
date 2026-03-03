@@ -2,10 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="canonical" href="https://chaymassama.be/">
+    <meta name="google-site-verification" content="JpsYykzwaCATkrDPAhGlFVuBeZXdRlqmOCpxk-vb73M" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Chaymassama | Photographie & Vidéographie</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> 
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+    <meta property="og:image" content="https://chaymassama.be/IMG_6150.jpg">
     <style>
         :root {
             --sky-blue: #B8E3F0;
@@ -14,6 +24,7 @@
             --soft-blue: #E1F4F8;
             --accent-blue: #4A90B8;
             --text-dark: #2C3E50;
+            --gold-accent: #FFD700;
         }
 
         * {
@@ -34,7 +45,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -56,7 +66,11 @@
             }
         }
 
-        /* Nuages décoratifs */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
         .cloud {
             position: absolute;
             background: rgba(255, 255, 255, 0.8);
@@ -117,7 +131,6 @@
             left: 30px;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -177,7 +190,6 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -260,7 +272,6 @@
             box-shadow: 0 6px 20px rgba(30, 95, 142, 0.4);
         }
 
-        /* Sections générales */
         section {
             padding: 5rem 2rem;
             position: relative;
@@ -288,7 +299,6 @@
             font-size: 1.5rem;
         }
 
-        /* Prestations */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -361,7 +371,6 @@
             font-weight: bold;
         }
 
-        /* Tarifs */
         .pricing-section {
             background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.6) 100%);
             border-radius: 30px;
@@ -371,7 +380,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -393,7 +402,7 @@
         }
 
         .pricing-card.featured::before {
-            content: 'Populaire';
+            content: 'Recommandé';
             position: absolute;
             top: -12px;
             right: 20px;
@@ -461,14 +470,6 @@
             font-weight: 700;
         }
 
-        .price-note {
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            display: block;
-            font-weight: normal;
-        }
-
-        /* Formulaire de commande */
         .order-section {
             background: white;
             border-radius: 30px;
@@ -561,7 +562,11 @@
             box-shadow: 0 5px 20px rgba(30, 95, 142, 0.3);
         }
 
-        /* Contact & Réseaux */
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         .contact-section {
             text-align: center;
             background: rgba(255,255,255,0.4);
@@ -622,6 +627,14 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(30, 95, 142, 0.2);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .phone-number:hover {
+            background: var(--deep-blue);
+            color: white;
+            transform: scale(1.05);
         }
 
         .location-badge {
@@ -636,7 +649,72 @@
             font-weight: 600;
         }
 
-        /* Footer */
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .promo-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .promo-banner::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .promo-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .promo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #2C3E50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .promo-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+            animation: pulse-glow 2s infinite;
+        }
+
         footer {
             background: var(--deep-blue);
             color: white;
@@ -664,7 +742,27 @@
             display: inline-block;
         }
 
-        /* Responsive */
+        .footer-support {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .footer-support a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 1px dotted rgba(255, 215, 0, 0.5);
+        }
+
+        .footer-support a:hover {
+            color: #FFA500;
+            border-bottom-style: solid;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -686,9 +784,13 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .promo-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
-        /* Estimation en temps réel */
         .estimate-box {
             background: var(--soft-blue);
             padding: 1.5rem;
@@ -709,19 +811,98 @@
             color: #e74c3c;
             font-size: 1.1em;
         }
+
+        .video-tier {
+            background: rgba(255,255,255,0.5);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .video-tier.simple {
+            border-left-color: #27ae60;
+        }
+
+        .video-tier.complex {
+            border-left-color: #e67e22;
+        }
+
+        .video-tier.premium {
+            border-left-color: var(--deep-blue);
+        }
+
+        footer.freecash-footer {
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            padding: 3rem 1rem;
+        }
+
+        footer.freecash-footer .footer-box {
+            background: rgba(255, 223, 0, 0.1);
+            border: 2px solid #FFD700;
+            border-radius: 20px;
+            padding: 2rem 3rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        footer.freecash-footer .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        footer.freecash-footer p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            color: var(--deep-blue);
+        }
+
+        footer.freecash-footer a.freecash-btn {
+            display: inline-block;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1.5rem;
+            background: #FFD700;
+            color: var(--deep-blue);
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        footer.freecash-footer a.freecash-btn:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            border: 2px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Nuages animés -->
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
     <div class="cloud cloud3"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <i class="fas fa-cloud"></i>
                 Chaymassama
             </a>
@@ -734,7 +915,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Chaymassama</h1>
@@ -764,7 +944,6 @@
         </div>
     </section>
 
-    <!-- Prestations -->
     <section id="prestations">
         <h2 class="section-title">Nos Prestations</h2>
         
@@ -795,7 +974,7 @@
                     <li>Montage colorimétrie inclus</li>
                     <li>Musique libre de droits</li>
                     <li>Format 4K disponible</li>
-                    <li>Drone sur demande</li>
+                    <li>Tarifs basés sur 50€/heure de travail</li>
                 </ul>
             </div>
 
@@ -816,7 +995,6 @@
         </div>
     </section>
 
-    <!-- Tarifs -->
     <section id="tarifs" class="pricing-section">
         <h2 class="section-title">Nos Tarifs</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-size: 1.1rem;">
@@ -824,7 +1002,6 @@
         </p>
 
         <div class="pricing-grid">
-            <!-- Formule Photo -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Photo</h3>
@@ -861,27 +1038,44 @@
                 </p>
             </div>
 
-            <!-- Formule Vidéo -->
             <div class="pricing-card featured">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Vidéo</h3>
-                    <div class="price">2000€<span class="price-unit">minimum</span></div>
+                    <div class="price">300€<span class="price-unit">à partir de</span></div>
                 </div>
-                <ul class="pricing-features">
+                
+                <div class="video-tier simple">
+                    <strong>2h Tournage + Montage</strong><br>
+                    <span style="color: #27ae60; font-weight: 600;">300€ - 500€</span><br>
+                    <small>• Reel Instagram basique: 300-350€<br>
+                    • Color grading & storytelling: 400-500€</small>
+                </div>
+
+                <div class="video-tier complex">
+                    <strong>4h Tournage + Montage</strong><br>
+                    <span style="color: #e67e22; font-weight: 600;">500€ - 900€</span><br>
+                    <small>• 6-10h de montage • 1 à 3 vidéos finales<br>
+                    • 500-650€ particulier • 700-900€ entreprise</small>
+                </div>
+
+                <div class="video-tier premium">
+                    <strong>8h Tournage + Montage</strong><br>
+                    <span style="color: var(--deep-blue); font-weight: 600;">900€ - 1800€</span><br>
+                    <small>• Journée complète • Gros volume de rush<br>
+                    • 1 vidéo principale + reels éventuels</small>
+                </div>
+
+                <ul class="pricing-features" style="margin-top: 1rem;">
                     <li>
-                        <span>Teaser (1-2 min)</span>
-                        <span class="price-tag">2000€</span>
+                        <span>Montage professionnel</span>
+                        <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
-                        <span>Film court (5 min)</span>
-                        <span class="price-tag">2500€</span>
+                        <span>Étalonnage colorimétrique</span>
+                        <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
-                        <span>Film long (15-20 min)</span>
-                        <span class="price-tag">3500€</span>
-                    </li>
-                    <li>
-                        <span>Montage inclus</span>
+                        <span>Sound design</span>
                         <span class="photo-pack">Inclus</span>
                     </li>
                     <li>
@@ -893,12 +1087,8 @@
                         <span class="price-tag">+30€</span>
                     </li>
                 </ul>
-                <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
-                    <i class="fas fa-info-circle"></i> Montage professionnel, étalonnage, sound design
-                </p>
             </div>
 
-            <!-- Mariages & Événements -->
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Mariages & Events</h3>
@@ -906,11 +1096,11 @@
                 </div>
                 <ul class="pricing-features">
                     <li>
-                        <span>Cérémonie seule</span>
+                        <span>Cérémonie seule (2-4h)</span>
                         <span class="price-tag">800€</span>
                     </li>
                     <li>
-                        <span>Journée complète</span>
+                        <span>Journée complète (8h+)</span>
                         <span class="price-tag">2000€</span>
                     </li>
                     <li>
@@ -935,49 +1125,39 @@
                 </p>
             </div>
         </div>
-
-        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.6); border-radius: 20px;">
-            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">💡 Bon à savoir</h3>
-            <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                Les tarifs incluent le temps de déplacement dans un rayon de 15 km. Au-delà, 
-                les frais sont calculés à 0,50€/km. Le montage vidéo est toujours inclus dans nos forfaits 
-                (dérushage, étalonnage, sound design). Pour les événements sportifs et soirées, 
-                consultez nos packs spéciaux avec livraison express sous 48 h.
-            </p>
-        </div>
     </section>
 
-    <!-- Formulaire de commande -->
+    <!-- FORMULAIRE FORMSPREE - FONCTIONNEL -->
     <section id="commander" class="order-section">
         <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
             Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé sous 24 h.
         </p>
 
-        <form id="bookingForm">
+        <form id="bookingForm" action="https://formspree.io/f/xjgeqqqq" method="POST">
             <div class="form-grid">
                 <div class="form-group">
-                    <label for="name">Nom & Prénom</label>
+                    <label for="name">Nom & Prénom *</label>
                     <input type="text" id="name" name="name" required placeholder="Votre nom">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required placeholder="votre@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="04 86 77 91 96" value="04 86 77 91 96">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="0486 77 91 96">
                 </div>
 
                 <div class="form-group">
-                    <label for="date">Date de l'événement</label>
+                    <label for="date">Date de l'événement *</label>
                     <input type="date" id="date" name="date" required>
                 </div>
 
                 <div class="form-group full-width">
-                    <label>Type de prestation</label>
+                    <label>Type de prestation *</label>
                     <div class="radio-group">
                         <label class="radio-label">
                             <input type="radio" name="type" value="photo" checked>
@@ -995,8 +1175,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="duration">Durée du shooting</label>
-                    <select id="duration" name="duration" onchange="calculateEstimate()">
+                    <label for="duration">Durée du shooting *</label>
+                    <select id="duration" name="duration" required onchange="calculateEstimate()">
                         <option value="2">2 heures</option>
                         <option value="4" selected>4 heures (1/2 journée)</option>
                         <option value="6">6 heures</option>
@@ -1006,8 +1186,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="travel">Temps de déplacement</label>
-                    <select id="travel" name="travel" onchange="calculateEstimate()">
+                    <label for="travel">Temps de déplacement *</label>
+                    <select id="travel" name="travel" required onchange="calculateEstimate()">
                         <option value="0">Moins de 15 min (inclus)</option>
                         <option value="15">30 minutes (+15€)</option>
                         <option value="30">1 heure (+30€)</option>
@@ -1017,9 +1197,21 @@
                 </div>
 
                 <div class="form-group full-width">
+                    <label for="complexity">Niveau de montage (Vidéo uniquement)</label>
+                    <select id="complexity" name="complexity" onchange="calculateEstimate()">
+                        <option value="simple">Simple (Reel Instagram basique)</option>
+                        <option value="standard" selected>Standard (Color grading, transitions propres)</option>
+                        <option value="complexe">Complexe (Storytelling avancé, multi-caméras)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
                     <label for="details">Détails de votre projet</label>
                     <textarea id="details" name="details" rows="4" placeholder="Décrivez votre événement, le lieu, vos attentes particulières..."></textarea>
                 </div>
+
+                <input type="hidden" name="_replyto" value="chaymassama@gmail.com">
+                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Chaymassama">
 
                 <div class="form-group full-width">
                     <div class="estimate-box">
@@ -1032,15 +1224,32 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" class="submit-btn" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Envoyer ma demande
                     </button>
+                </div>
+
+                <div class="form-group full-width">
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> <strong>Merci !</strong> Votre demande a bien été envoyée à chaymassama@gmail.com. Je vous contacterai rapidement au 0486 77 91 96.
+                    </div>
                 </div>
             </div>
         </form>
     </section>
 
-    <!-- Contact & Partenariats -->
+    <div class="promo-banner">
+        <div class="promo-content">
+            <span><i class="fas fa-gift" style="color: #FFD700;"></i> Vous appréciez mon travail ?</span>
+            <a href="https://freecash.com/r/chaymassama" target="_blank" class="promo-link" rel="noopener noreferrer">
+                <i class="fas fa-coins"></i> Me soutenir via Freecash
+            </a>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--accent-blue); margin-top: 0.8rem; font-style: italic;">
+            Gagnez des récompenses en testant des apps et soutenez mon activité créative gratuitement
+        </p>
+    </div>
+
     <section id="contact" class="contact-section">
         <h2 class="section-title">Contact & Partenariats</h2>
         
@@ -1071,9 +1280,12 @@
                 <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
                 Pour toute collaboration ou partenariat :
             </p>
-            <div class="phone-number">
-                <i class="fas fa-phone-alt"></i> 04 86 77 91 96
-            </div>
+            <a href="tel:+32486779196" class="phone-number" title="Cliquez pour appeler">
+                <i class="fas fa-phone-alt"></i> 0486 77 91 96
+            </a>
+            <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
+                <i class="fas fa-mobile-alt"></i> Cliquez pour appeler directement
+            </p>
         </div>
 
         <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
@@ -1085,58 +1297,69 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
+        <div class="footer-box">
             <div class="footer-brand">
-                <i class="fas fa-cloud"></i> Chaymassama
+                <i class="fas fa-cloud"></i> Chaymassama 💛
             </div>
             <p>Photographie & Vidéographie avec passion depuis 2020</p>
-            
             <div class="footer-location">
-                <i class="fas fa-map-marker-alt"></i> 
-                <strong>Belgique</strong> - Déplacements possibles partout en Europe
+                <i class="fas fa-map-marker-alt"></i> Belgique - Déplacements possibles partout en Europe
             </div>
-            
-            <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">
+            <a href="https://freecash.com/r/chaymassama" target="_blank" class="freecash-btn">
+                💛 Soutenir via Freecash
+            </a>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
                 © 2024 Chaymassama - Tous droits réservés | 
-                <a href="#" style="color: white;">Mentions légales</a>
+                <a href="#">Mentions légales</a>
             </p>
         </div>
     </footer>
 
     <script>
-        // Calcul de l'estimation en temps réel
         function calculateEstimate() {
             const type = document.querySelector('input[name="type"]:checked').value;
             const duration = parseInt(document.getElementById('duration').value);
             const travel = parseInt(document.getElementById('travel').value);
+            const complexity = document.getElementById('complexity').value;
             
             let basePrice = 0;
-            let travelCost = travel * 1; // 1€ par minute de déplacement (approx)
+            let travelCost = travel * 1;
             
             if (type === 'photo') {
-                basePrice = duration * 37.5; // 150€ pour 4h = 37.5€/h
+                basePrice = duration * 37.5;
             } else if (type === 'video') {
-                // Minimum 2000€ pour vidéo
-                basePrice = Math.max(2000, duration * 75);
+                let shootingTime = duration;
+                let editingTime;
+                
+                if (duration <= 2) {
+                    editingTime = complexity === 'simple' ? 3 : (complexity === 'standard' ? 4 : 6);
+                } else if (duration <= 4) {
+                    editingTime = complexity === 'simple' ? 6 : (complexity === 'standard' ? 8 : 10);
+                } else {
+                    editingTime = complexity === 'simple' ? 10 : (complexity === 'standard' ? 14 : 20);
+                }
+                
+                let totalHours = shootingTime + editingTime;
+                basePrice = totalHours * 50;
+                
+                if (complexity === 'complexe') basePrice *= 1.2;
+                
             } else {
-                basePrice = Math.max(2000, duration * 100); // Pack photo+video
+                basePrice = Math.max(2000, duration * 100); 
             }
             
             const minPrice = Math.floor(basePrice + travelCost);
-            const maxPrice = Math.floor(basePrice * 1.3 + travelCost);
+            const maxPrice = Math.floor(basePrice * 1.2 + travelCost);
             
             document.getElementById('estimatePrice').textContent = 
                 minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
         }
 
-        // Mettre à jour quand on change le type
         document.querySelectorAll('input[name="type"]').forEach(radio => {
             radio.addEventListener('change', calculateEstimate);
         });
 
-        // Animation au scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -100px 0px"
@@ -1150,14 +1373,12 @@
             });
         }, observerOptions);
 
-        // Observer les cartes
         document.querySelectorAll('.service-card, .pricing-card').forEach((el, index) => {
             el.style.opacity = "0";
             el.style.animationDelay = `${index * 0.1}s`;
             observer.observe(el);
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1171,10 +1392,18 @@
             });
         });
 
-        // Gestion du formulaire
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre demande ! Je vous contacterai très rapidement au 04 86 77 91 96 ou par email pour confirmer votre devis.');
+        // Gestion du formulaire Formspree - https://formspree.io/f/xjgeqqqq
+        const form = document.getElementById('bookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // Animation de chargement
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            // Le formulaire se soumet automatiquement à https://formspree.io/f/xjgeqqqq
+            // Les données seront envoyées à chaymassama@gmail.com
         });
     </script>
 </body>
