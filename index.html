@@ -577,6 +577,11 @@
             box-shadow: 0 5px 20px rgba(30, 95, 142, 0.3);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         /* Contact & Réseaux */
         .contact-section {
             text-align: center;
@@ -638,6 +643,14 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(30, 95, 142, 0.2);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .phone-number:hover {
+            background: var(--deep-blue);
+            color: white;
+            transform: scale(1.05);
         }
 
         .location-badge {
@@ -889,6 +902,22 @@
             background: #FFC107;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Message de confirmation */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            border: 2px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
         }
     </style>
 </head>
@@ -1156,37 +1185,38 @@
         </div>
     </section>
 
-    <!-- Formulaire de commande -->
+    <!-- Formulaire de commande - CONNECTÉ À FORMSPREE -->
     <section id="commander" class="order-section">
         <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
             Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé sous 24 h.
         </p>
 
-        <form id="bookingForm">
+        <!-- FORMULAIRE FORMSPREE - Remplacez {FORM_ID} par votre ID réel -->
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             <div class="form-grid">
                 <div class="form-group">
-                    <label for="name">Nom & Prénom</label>
+                    <label for="name">Nom & Prénom *</label>
                     <input type="text" id="name" name="name" required placeholder="Votre nom">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required placeholder="votre@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="04 86 77 91 96" value="04 86 77 91 96">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="0486 77 91 96" value="0486 77 91 96">
                 </div>
 
                 <div class="form-group">
-                    <label for="date">Date de l'événement</label>
+                    <label for="date">Date de l'événement *</label>
                     <input type="date" id="date" name="date" required>
                 </div>
 
                 <div class="form-group full-width">
-                    <label>Type de prestation</label>
+                    <label>Type de prestation *</label>
                     <div class="radio-group">
                         <label class="radio-label">
                             <input type="radio" name="type" value="photo" checked>
@@ -1204,8 +1234,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="duration">Durée du shooting</label>
-                    <select id="duration" name="duration" onchange="calculateEstimate()">
+                    <label for="duration">Durée du shooting *</label>
+                    <select id="duration" name="duration" required onchange="calculateEstimate()">
                         <option value="2">2 heures</option>
                         <option value="4" selected>4 heures (1/2 journée)</option>
                         <option value="6">6 heures</option>
@@ -1215,8 +1245,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="travel">Temps de déplacement</label>
-                    <select id="travel" name="travel" onchange="calculateEstimate()">
+                    <label for="travel">Temps de déplacement *</label>
+                    <select id="travel" name="travel" required onchange="calculateEstimate()">
                         <option value="0">Moins de 15 min (inclus)</option>
                         <option value="15">30 minutes (+15€)</option>
                         <option value="30">1 heure (+30€)</option>
@@ -1239,6 +1269,12 @@
                     <textarea id="details" name="details" rows="4" placeholder="Décrivez votre événement, le lieu, vos attentes particulières..."></textarea>
                 </div>
 
+                <!-- Champ caché pour l'email de destination (redondance sécurité) -->
+                <input type="hidden" name="_replyto" value="chaymassama@gmail.com">
+                
+                <!-- Champ caché pour le sujet de l'email -->
+                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Chaymassama">
+
                 <div class="form-group full-width">
                     <div class="estimate-box">
                         <p>Estimation du devis :</p>
@@ -1250,12 +1286,28 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" class="submit-btn" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Envoyer ma demande
                     </button>
                 </div>
+
+                <div class="form-group full-width">
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> <strong>Merci !</strong> Votre demande a bien été envoyée à chaymassama@gmail.com. Je vous contacterai rapidement au 0486 77 91 96.
+                    </div>
+                </div>
             </div>
         </form>
+
+        <!-- Instructions pour configurer Formspree -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border: 2px solid #ffc107; border-radius: 15px; font-size: 0.9rem;">
+            <h4 style="color: #856404; margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> Configuration requise :</h4>
+            <p style="color: #856404; line-height: 1.6;">
+                Pour activer l'envoi d'emails, remplacez <code>YOUR_FORM_ID</code> dans le code par votre ID Formspree. 
+                <a href="https://formspree.io/register" target="_blank" style="color: #856404; font-weight: bold; text-decoration: underline;">Créez un compte gratuit sur Formspree</a>, 
+                créez un nouveau formulaire, copiez l'ID (format : xxxxxxxx) et collez-le à la place de YOUR_FORM_ID.
+            </p>
+        </div>
     </section>
 
     <!-- Bannière Promotion Freecash - Intégration élégante -->
@@ -1302,9 +1354,13 @@
                 <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
                 Pour toute collaboration ou partenariat :
             </p>
-            <div class="phone-number">
-                <i class="fas fa-phone-alt"></i> 04 86 77 91 96
-            </div>
+            <!-- NUMÉRO CLIQUABLE - LIEN TEL: -->
+            <a href="tel:+32486779196" class="phone-number" title="Cliquez pour appeler">
+                <i class="fas fa-phone-alt"></i> 0486 77 91 96
+            </a>
+            <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
+                <i class="fas fa-mobile-alt"></i> Cliquez pour appeler directement
+            </p>
         </div>
 
         <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
@@ -1432,11 +1488,33 @@
             });
         });
 
-        // Gestion du formulaire
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre demande ! Je vous contacterai très rapidement au 04 86 77 91 96 ou par email pour confirmer votre devis.');
+        // Gestion du formulaire Formspree
+        const form = document.getElementById('bookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // Si c'est encore YOUR_FORM_ID, afficher une alerte
+            if (form.action.includes('https://formspree.io/f/xjgeqqqq')) {
+                e.preventDefault();
+                alert('⚠️ Configuration requise :\n\nRemplacez YOUR_FORM_ID par votre ID Formspree dans le code HTML.\n\n1. Allez sur https://formspree.io/register\n2. Créez un compte gratuit\n3. Créez un nouveau formulaire\n4. Copiez l\'ID (8 caractères)\n5. Remplacez YOUR_FORM_ID dans le code');
+                return;
+            }
+            
+            // Animation de chargement
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            // Le formulaire va se soumettre normalement à Formspree
+            // qui redirigera vers une page de confirmation
+            // ou vous pouvez gérer la réponse en AJAX ci-dessous
         });
+
+        // Détection du retour de Formspree (si redirection)
+        if (window.location.search.includes('submitted=true')) {
+            successMessage.classList.add('show');
+            form.reset();
+        }
     </script>
     <script src="./script.js"></script> 
   </body>
