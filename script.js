@@ -1185,7 +1185,7 @@
         <div id="mariage" class="portfolio-content active">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(0)">
-                    <img src="mariage1.jpg.webp" alt="Photographe mariage Belgique cérémonie">
+                    <img src="mariage1.webp" alt="Photographe mariage Belgique cérémonie">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Mariage</h3>
@@ -1193,7 +1193,7 @@
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(1)">
-                    <img src="mariage2.jpg.webp" alt="Photographe mariage Belgique couple">
+                    <img src="mariage2.webp" alt="Photographe mariage Belgique couple">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Mariage</h3>
@@ -1207,7 +1207,7 @@
         <div id="sport" class="portfolio-content">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(2)">
-                    <img src="sport1.jpg.webp" alt="Photographe sport boxe Belgique">
+                    <img src="sport1.webp" alt="Photographe sport Belgique portrait boxeur">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Portrait Sportif</h3>
@@ -1215,7 +1215,7 @@
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(3)">
-                    <img src="sport2.jpg.webp" alt="Photographe combat boxe">
+                    <img src="sport2.webp" alt="Photographe sport Belgique combat boxe">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Combat de Boxe</h3>
@@ -1229,7 +1229,7 @@
         <div id="evenements" class="portfolio-content">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(4)">
-                    <img src="event1.jpg.webp" alt="Food Truck">
+                    <img src="event1.webp" alt="Photographe événement Belgique food truck">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Food Truck</h3>
@@ -1237,7 +1237,7 @@
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(5)">
-                    <img src="event2.jpg.webp" alt="Cérémonie">
+                    <img src="event2.webp" alt="Photographe événement Belgique cérémonie discours">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Cérémonie</h3>
@@ -1641,12 +1641,12 @@
     <script>
         // Données images portfolio
         const portfolioImages = [
-            { src: 'mariage1.jpg.webp', caption: 'Mariage - Cérémonie', category: 'Mariage' },
-            { src: 'mariage2.jpg.webp', caption: 'Mariage - Couple', category: 'Mariage' },
-            { src: 'sport1.jpg.webp', caption: 'Portrait Sportif', category: 'Sport' },
-            { src: 'sport2.jpg.webp', caption: 'Combat de Boxe', category: 'Sport' },
-            { src: 'event1.jpg.webp', caption: 'Food Truck', category: 'Événements' },
-            { src: 'event2.jpg.webp', caption: 'Cérémonie', category: 'Événements' }
+            { src: 'mariage1.webp', caption: 'Mariage - Cérémonie', category: 'Mariage' },
+            { src: 'mariage2.webp', caption: 'Mariage - Couple', category: 'Mariage' },
+            { src: 'sport1.webp', caption: 'Portrait Sportif', category: 'Sport' },
+            { src: 'sport2.webp', caption: 'Combat de Boxe', category: 'Sport' },
+            { src: 'event1.webp', caption: 'Food Truck', category: 'Événements' },
+            { src: 'event2.webp', caption: 'Cérémonie', category: 'Événements' }
         ];
 
         let currentImageIndex = 0;
