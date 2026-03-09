@@ -312,6 +312,17 @@
             margin: 3rem auto;
         }
 
+        .portfolio-subtitle {
+            text-align: center;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
         .portfolio-tabs {
             display: flex;
             justify-content: center;
@@ -1168,6 +1179,11 @@
     <!-- PORTFOLIO -->
     <section id="portfolio" class="portfolio-section">
         <h2 class="section-title">Portfolio</h2>
+        
+        <p class="portfolio-subtitle">
+            <i class="fas fa-images" style="margin-right: 8px;"></i>
+            Un aperçu de mon univers — bien plus de créations disponibles sur demande
+        </p>
 
         <div class="portfolio-tabs">
             <button class="portfolio-tab active" onclick="showCategory('mariage', event)">
