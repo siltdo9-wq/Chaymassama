@@ -1165,49 +1165,49 @@
         </div>
     </section>
 
-    <!-- SECTION PORTFOLIO - NOUVEAU -->
+    <!-- PORTFOLIO -->
     <section id="portfolio" class="portfolio-section">
         <h2 class="section-title">Portfolio</h2>
-        
+
         <div class="portfolio-tabs">
-            <button class="portfolio-tab active" onclick="showCategory('mariage')">
+            <button class="portfolio-tab active" onclick="showCategory('mariage', event)">
                 <i class="fas fa-ring"></i> Mariage
             </button>
-            <button class="portfolio-tab" onclick="showCategory('sport')">
+            <button class="portfolio-tab" onclick="showCategory('sport', event)">
                 <i class="fas fa-running"></i> Sport
             </button>
-            <button class="portfolio-tab" onclick="showCategory('evenements')">
+            <button class="portfolio-tab" onclick="showCategory('evenements', event)">
                 <i class="fas fa-glass-cheers"></i> Événements
             </button>
         </div>
 
-        <!-- Mariage (vide pour l'instant) -->
+        <!-- MARIAGE -->
         <div id="mariage" class="portfolio-content active">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(0)">
-                    <img src="/api/placeholder/600/800" alt="Mariage - Photo à venir">
+                    <img src="mariage1.jpg.webp" alt="Photographe mariage Belgique cérémonie">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
-                        <h3>À venir</h3>
-                        <p>Photos de mariage bientôt disponibles</p>
+                        <h3>Mariage</h3>
+                        <p>Cérémonie</p>
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(1)">
-                    <img src="/api/placeholder/600/800" alt="Mariage - Photo à venir">
+                    <img src="mariage2.jpg.webp" alt="Photographe mariage Belgique couple">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
-                        <h3>À venir</h3>
-                        <p>Photos de mariage bientôt disponibles</p>
+                        <h3>Mariage</h3>
+                        <p>Séance couple</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sport -->
+        <!-- SPORT -->
         <div id="sport" class="portfolio-content">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(2)">
-                    <img src="DSC00455.jpg" alt="Sport - Portrait boxeur">
+                    <img src="sport1.jpg.webp" alt="Photographe sport boxe Belgique">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Portrait Sportif</h3>
@@ -1215,57 +1215,40 @@
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(3)">
-                    <img src="DSC00239.jpg" alt="Sport - Combat de boxe">
+                    <img src="sport2.jpg.webp" alt="Photographe combat boxe">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Combat de Boxe</h3>
-                        <p>Action en plein air</p>
+                        <p>Action en plein combat</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Événements -->
+        <!-- EVENEMENTS -->
         <div id="evenements" class="portfolio-content">
             <div class="portfolio-grid">
                 <div class="portfolio-item" onclick="openLightbox(4)">
-                    <img src="DSC00412.jpg" alt="Événement - Food truck">
+                    <img src="event1.jpg.webp" alt="Food Truck">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Food Truck</h3>
-                        <p>Préparation gourmande</p>
+                        <p>Événement culinaire</p>
                     </div>
                 </div>
                 <div class="portfolio-item" onclick="openLightbox(5)">
-                    <img src="DSC00987.jpg" alt="Événement - Cérémonie">
+                    <img src="event2.jpg.webp" alt="Cérémonie">
                     <div class="portfolio-overlay">
                         <i class="fas fa-expand"></i>
                         <h3>Cérémonie</h3>
-                        <p>Discours en plein air</p>
+                        <p>Discours</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <img id="lightbox-img" class="lightbox-img" src="" alt="">
-            <div id="lightbox-caption" class="lightbox-caption"></div>
-            <div id="lightbox-counter" class="lightbox-counter"></div>
-        </div>
-    </div>
-
+    <!-- PRESTATIONS -->
     <section id="prestations">
         <h2 class="section-title">Nos Prestations</h2>
         
@@ -1317,6 +1300,7 @@
         </div>
     </section>
 
+    <!-- TARIFS -->
     <section id="tarifs" class="pricing-section">
         <h2 class="section-title">Nos Tarifs</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-size: 1.1rem;">
@@ -1449,6 +1433,7 @@
         </div>
     </section>
 
+    <!-- COMMANDER -->
     <section id="commander" class="order-section">
         <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
@@ -1559,6 +1544,7 @@
         </form>
     </section>
 
+    <!-- PROMO -->
     <div class="promo-banner">
         <div class="promo-content">
             <span><i class="fas fa-gift" style="color: #FFD700;"></i> Vous appréciez mon travail ?</span>
@@ -1571,6 +1557,7 @@
         </p>
     </div>
 
+    <!-- CONTACT -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Contact & Partenariats</h2>
         
@@ -1618,6 +1605,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-box">
             <div class="footer-brand">
@@ -1637,33 +1625,41 @@
         </div>
     </footer>
 
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT JS -->
     <script>
-        // Données des images pour la lightbox
+        // Données images portfolio
         const portfolioImages = [
-{ src: 'mariage1.jpg', caption: 'Mariage - Cérémonie', category: 'Mariage' },
-{ src: 'mariage2.jpg', caption: 'Mariage - Couple', category: 'Mariage' },
-{ src: 'sport1.jpg', caption: 'Portrait Sportif - Cuban Boxing Bressoux', category: 'Sport' },
-{ src: 'sport2.jpg', caption: 'Combat de Boxe', category: 'Sport' },
-{ src: 'event1.jpg', caption: 'Food Truck - Préparation', category: 'Événements' },
-{ src: 'event2.jpg', caption: 'Cérémonie - Discours', category: 'Événements' }
-];
+            { src: 'mariage1.jpg.webp', caption: 'Mariage - Cérémonie', category: 'Mariage' },
+            { src: 'mariage2.jpg.webp', caption: 'Mariage - Couple', category: 'Mariage' },
+            { src: 'sport1.jpg.webp', caption: 'Portrait Sportif', category: 'Sport' },
+            { src: 'sport2.jpg.webp', caption: 'Combat de Boxe', category: 'Sport' },
+            { src: 'event1.jpg.webp', caption: 'Food Truck', category: 'Événements' },
+            { src: 'event2.jpg.webp', caption: 'Cérémonie', category: 'Événements' }
+        ];
 
         let currentImageIndex = 0;
 
-        function showCategory(category) {
-            // Mettre à jour les onglets
-            document.querySelectorAll('.portfolio-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Afficher le contenu correspondant
-            document.querySelectorAll('.portfolio-content').forEach(content => {
-                content.classList.remove('active');
-            });
+        // Onglets portfolio
+        function showCategory(category, event) {
+            document.querySelectorAll('.portfolio-tab').forEach(tab => tab.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.querySelectorAll('.portfolio-content').forEach(content => content.classList.remove('active'));
             document.getElementById(category).classList.add('active');
         }
 
+        // Lightbox
         function openLightbox(index) {
             currentImageIndex = index;
             const lightbox = document.getElementById('lightbox');
@@ -1687,19 +1683,15 @@
         }
 
         function changeImage(direction) {
+            event.stopPropagation();
             currentImageIndex += direction;
-            
-            if (currentImageIndex < 0) {
-                currentImageIndex = portfolioImages.length - 1;
-            } else if (currentImageIndex >= portfolioImages.length) {
-                currentImageIndex = 0;
-            }
+            if (currentImageIndex < 0) currentImageIndex = portfolioImages.length - 1;
+            if (currentImageIndex >= portfolioImages.length) currentImageIndex = 0;
 
             const img = document.getElementById('lightbox-img');
             const caption = document.getElementById('lightbox-caption');
             const counter = document.getElementById('lightbox-counter');
 
-            // Animation de transition
             img.style.opacity = '0';
             setTimeout(() => {
                 img.src = portfolioImages[currentImageIndex].src;
@@ -1710,7 +1702,7 @@
         }
 
         // Navigation clavier
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', e => {
             if (document.getElementById('lightbox').classList.contains('active')) {
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') changeImage(-1);
@@ -1718,6 +1710,7 @@
             }
         });
 
+        // Estimation prix
         function calculateEstimate() {
             const type = document.querySelector('input[name="type"]:checked').value;
             const duration = parseInt(document.getElementById('duration').value);
@@ -1725,14 +1718,12 @@
             const complexity = document.getElementById('complexity').value;
             
             let basePrice = 0;
-            let travelCost = travel * 1;
-            
+            let travelCost = travel;
+
             if (type === 'photo') {
                 basePrice = duration * 37.5;
             } else if (type === 'video') {
-                let shootingTime = duration;
                 let editingTime;
-                
                 if (duration <= 2) {
                     editingTime = complexity === 'simple' ? 3 : (complexity === 'standard' ? 4 : 6);
                 } else if (duration <= 4) {
@@ -1740,20 +1731,17 @@
                 } else {
                     editingTime = complexity === 'simple' ? 10 : (complexity === 'standard' ? 14 : 20);
                 }
-                
-                let totalHours = shootingTime + editingTime;
+                let totalHours = duration + editingTime;
                 basePrice = totalHours * 50;
-                
                 if (complexity === 'complexe') basePrice *= 1.2;
-                
-            } else {
-                basePrice = Math.max(2000, duration * 100); 
+            } else { // photo + vidéo
+                basePrice = Math.max(2000, duration * 100);
             }
-            
+
             const minPrice = Math.floor(basePrice + travelCost);
             const maxPrice = Math.floor(basePrice * 1.2 + travelCost);
-            
-            document.getElementById('estimatePrice').textContent = 
+
+            document.getElementById('estimatePrice').textContent =
                 minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
         }
 
@@ -1761,45 +1749,37 @@
             radio.addEventListener('change', calculateEstimate);
         });
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -100px 0px"
-        };
+        window.addEventListener('DOMContentLoaded', calculateEstimate);
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = "fadeInUp 0.8s ease-out forwards";
+        // Gestion du formulaire
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    successMsg.classList.add('show');
+                    this.reset();
+                    calculateEstimate();
+                } else {
+                    alert('Une erreur est survenue. Veuillez réessayer.');
                 }
+            }).catch(error => {
+                alert('Erreur de connexion. Veuillez réessayer.');
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer ma demande';
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card, .pricing-card').forEach((el, index) => {
-            el.style.opacity = "0";
-            el.style.animationDelay = `${index * 0.1}s`;
-            observer.observe(el);
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        const form = document.getElementById('bookingForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        form.addEventListener('submit', function(e) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
         });
     </script>
+
 </body>
 </html>
