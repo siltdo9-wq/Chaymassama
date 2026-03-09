@@ -66,6 +66,11 @@
             }
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
             50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
@@ -299,6 +304,232 @@
             font-size: 1.5rem;
         }
 
+        /* PORTFOLIO SECTION - NOUVEAU */
+        .portfolio-section {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 3rem auto;
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tab {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            color: var(--deep-blue);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 95, 142, 0.1);
+        }
+
+        .portfolio-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 95, 142, 0.2);
+        }
+
+        .portfolio-tab.active {
+            background: var(--deep-blue);
+            color: white;
+            border-color: var(--deep-blue);
+        }
+
+        .portfolio-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .portfolio-content.active {
+            display: block;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(30, 95, 142, 0.15);
+            cursor: pointer;
+            transition: all 0.3s;
+            aspect-ratio: 3/4;
+            background: var(--soft-blue);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 95, 142, 0.25);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30, 95, 142, 0.9), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .portfolio-overlay i {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* LIGHTBOX - NOUVEAU */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-counter {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Prestations */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -371,6 +602,7 @@
             font-weight: bold;
         }
 
+        /* Tarifs */
         .pricing-section {
             background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.6) 100%);
             border-radius: 30px;
@@ -742,25 +974,48 @@
             display: inline-block;
         }
 
-        .footer-support {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.85rem;
-            opacity: 0.9;
+        .footer-box {
+            background: rgba(255, 223, 0, 0.1);
+            border: 2px solid #FFD700;
+            border-radius: 20px;
+            padding: 2rem 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
         }
 
-        .footer-support a {
-            color: #FFD700;
+        .freecash-btn {
+            display: inline-block;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1.5rem;
+            background: #FFD700;
+            color: var(--deep-blue);
+            font-weight: 700;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
             transition: all 0.3s;
-            border-bottom: 1px dotted rgba(255, 215, 0, 0.5);
         }
 
-        .footer-support a:hover {
-            color: #FFA500;
-            border-bottom-style: solid;
+        .freecash-btn:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            border: 2px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
         }
 
         @media (max-width: 768px) {
@@ -785,9 +1040,35 @@
                 align-items: center;
             }
 
-            .promo-content {
-                flex-direction: column;
-                text-align: center;
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item {
+                aspect-ratio: 4/5;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .portfolio-tabs {
+                gap: 0.5rem;
+            }
+
+            .portfolio-tab {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -831,67 +1112,6 @@
         .video-tier.premium {
             border-left-color: var(--deep-blue);
         }
-
-        footer.freecash-footer {
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            padding: 3rem 1rem;
-        }
-
-        footer.freecash-footer .footer-box {
-            background: rgba(255, 223, 0, 0.1);
-            border: 2px solid #FFD700;
-            border-radius: 20px;
-            padding: 2rem 3rem;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
-        }
-
-        footer.freecash-footer .footer-brand {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        footer.freecash-footer p {
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
-            color: var(--deep-blue);
-        }
-
-        footer.freecash-footer a.freecash-btn {
-            display: inline-block;
-            margin: 0.5rem 0;
-            padding: 0.8rem 1.5rem;
-            background: #FFD700;
-            color: var(--deep-blue);
-            font-weight: 700;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        footer.freecash-footer a.freecash-btn:hover {
-            background: #FFC107;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-top: 1rem;
-            border: 2px solid #c3e6cb;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: fadeInUp 0.5s ease-out;
-        }
     </style>
 </head>
 <body>
@@ -907,6 +1127,7 @@
                 Chaymassama
             </a>
             <ul class="nav-links">
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#prestations">Prestations</a></li>
                 <li><a href="#tarifs">Tarifs</a></li>
                 <li><a href="#commander">Commander</a></li>
@@ -940,9 +1161,110 @@
                 Photos et vidéos professionnelles avec montage inclus.
             </p>
 
-            <a href="#commander" class="cta-button">Demander un Devis</a>
+            <a href="#portfolio" class="cta-button">Voir mon Portfolio</a>
         </div>
     </section>
+
+    <!-- SECTION PORTFOLIO - NOUVEAU -->
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="section-title">Portfolio</h2>
+        
+        <div class="portfolio-tabs">
+            <button class="portfolio-tab active" onclick="showCategory('mariage')">
+                <i class="fas fa-ring"></i> Mariage
+            </button>
+            <button class="portfolio-tab" onclick="showCategory('sport')">
+                <i class="fas fa-running"></i> Sport
+            </button>
+            <button class="portfolio-tab" onclick="showCategory('evenements')">
+                <i class="fas fa-glass-cheers"></i> Événements
+            </button>
+        </div>
+
+        <!-- Mariage (vide pour l'instant) -->
+        <div id="mariage" class="portfolio-content active">
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openLightbox(0)">
+                    <img src="/api/placeholder/600/800" alt="Mariage - Photo à venir">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>À venir</h3>
+                        <p>Photos de mariage bientôt disponibles</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(1)">
+                    <img src="/api/placeholder/600/800" alt="Mariage - Photo à venir">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>À venir</h3>
+                        <p>Photos de mariage bientôt disponibles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sport -->
+        <div id="sport" class="portfolio-content">
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openLightbox(2)">
+                    <img src="DSC00455.jpg" alt="Sport - Portrait boxeur">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>Portrait Sportif</h3>
+                        <p>Cuban Boxing Bressoux</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(3)">
+                    <img src="DSC00239.jpg" alt="Sport - Combat de boxe">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>Combat de Boxe</h3>
+                        <p>Action en plein air</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Événements -->
+        <div id="evenements" class="portfolio-content">
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openLightbox(4)">
+                    <img src="DSC00412.jpg" alt="Événement - Food truck">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>Food Truck</h3>
+                        <p>Préparation gourmande</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(5)">
+                    <img src="DSC00987.jpg" alt="Événement - Cérémonie">
+                    <div class="portfolio-overlay">
+                        <i class="fas fa-expand"></i>
+                        <h3>Cérémonie</h3>
+                        <p>Discours en plein air</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+        </div>
+    </div>
 
     <section id="prestations">
         <h2 class="section-title">Nos Prestations</h2>
@@ -1127,7 +1449,6 @@
         </div>
     </section>
 
-    <!-- FORMULAIRE FORMSPREE - FONCTIONNEL -->
     <section id="commander" class="order-section">
         <h2 class="section-title" style="margin-bottom: 1rem;">Commander votre Shooting</h2>
         <p style="text-align: center; color: var(--text-dark); margin-bottom: 2rem;">
@@ -1317,6 +1638,86 @@
     </footer>
 
     <script>
+        // Données des images pour la lightbox
+        const portfolioImages = [
+{ src: 'mariage1.jpg', caption: 'Mariage - Cérémonie', category: 'Mariage' },
+{ src: 'mariage2.jpg', caption: 'Mariage - Couple', category: 'Mariage' },
+{ src: 'sport1.jpg', caption: 'Portrait Sportif - Cuban Boxing Bressoux', category: 'Sport' },
+{ src: 'sport2.jpg', caption: 'Combat de Boxe', category: 'Sport' },
+{ src: 'event1.jpg', caption: 'Food Truck - Préparation', category: 'Événements' },
+{ src: 'event2.jpg', caption: 'Cérémonie - Discours', category: 'Événements' }
+];
+
+        let currentImageIndex = 0;
+
+        function showCategory(category) {
+            // Mettre à jour les onglets
+            document.querySelectorAll('.portfolio-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Afficher le contenu correspondant
+            document.querySelectorAll('.portfolio-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(category).classList.add('active');
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const counter = document.getElementById('lightbox-counter');
+
+            img.src = portfolioImages[index].src;
+            caption.textContent = portfolioImages[index].caption;
+            counter.textContent = `${index + 1} / ${portfolioImages.length} • ${portfolioImages[index].category}`;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (!event || event.target.id === 'lightbox' || event.target.closest('.lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = portfolioImages.length - 1;
+            } else if (currentImageIndex >= portfolioImages.length) {
+                currentImageIndex = 0;
+            }
+
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const counter = document.getElementById('lightbox-counter');
+
+            // Animation de transition
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = portfolioImages[currentImageIndex].src;
+                caption.textContent = portfolioImages[currentImageIndex].caption;
+                counter.textContent = `${currentImageIndex + 1} / ${portfolioImages.length} • ${portfolioImages[currentImageIndex].category}`;
+                img.style.opacity = '1';
+            }, 200);
+        }
+
+        // Navigation clavier
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
         function calculateEstimate() {
             const type = document.querySelector('input[name="type"]:checked').value;
             const duration = parseInt(document.getElementById('duration').value);
@@ -1392,18 +1793,12 @@
             });
         });
 
-        // Gestion du formulaire Formspree - https://formspree.io/f/xjgeqqqq
         const form = document.getElementById('bookingForm');
         const submitBtn = document.getElementById('submitBtn');
-        const successMessage = document.getElementById('successMessage');
 
         form.addEventListener('submit', function(e) {
-            // Animation de chargement
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            
-            // Le formulaire se soumet automatiquement à https://formspree.io/f/xjgeqqqq
-            // Les données seront envoyées à chaymassama@gmail.com
         });
     </script>
 </body>
