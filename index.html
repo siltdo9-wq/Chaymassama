@@ -1123,6 +1123,69 @@
         .video-tier.premium {
             border-left-color: var(--deep-blue);
         }
+ -------------------------
+       CSS pour le bloc Contact
+    ------------------------- */
+    .contact-section .section-title {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-text {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .social-btn {
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.2s;
+    }
+
+    .social-btn.email { background: #EA4335; }
+    .social-btn.instagram { background: #C13584; }
+    .social-btn.youtube { background: #FF0000; }
+
+    .social-btn:hover { transform: scale(1.05); }
+
+    .contact-info { text-align: center; margin-bottom: 3rem; }
+    .collab-text i { color: var(--deep-blue); }
+    .phone-number { display: block; margin: 0.5rem 0; text-decoration: none; color: inherit; }
+    .click-to-call { font-size: 0.9rem; color: var(--accent-blue); }
+
+    .location-card {
+        margin: 0 auto;
+        margin-top: 3rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .location-card h3 { color: var(--deep-blue); margin-bottom: 1rem; }
+    .location-badge { margin-top: 0.5rem; }
+
+</style>
+        
     </style>
 </head>
 <body>
