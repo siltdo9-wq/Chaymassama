@@ -1123,6 +1123,72 @@
         .video-tier.premium {
             border-left-color: var(--deep-blue);
         }
+ -------------------------
+       CSS pour le bloc Contact
+    ------------------------- */
+    .section-title::after {
+    content: '☁️';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+}
+
+    .contact-text {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .social-btn {
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.2s;
+    }
+
+    .social-btn.email { background: #EA4335; }
+    .social-btn.instagram { background: #C13584; }
+    .social-btn.youtube { background: #FF0000; }
+
+    .social-btn:hover { transform: scale(1.05); }
+
+    .contact-info { text-align: center; margin-bottom: 3rem; }
+    .collab-text i { color: var(--deep-blue); }
+    .phone-number { display: block; margin: 0.5rem 0; text-decoration: none; color: inherit; }
+    .click-to-call { font-size: 0.9rem; color: var(--accent-blue); }
+
+    .location-card {
+        margin: 0 auto;
+        margin-top: 3rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .location-card h3 { color: var(--deep-blue); margin-bottom: 1rem; }
+    .location-badge { margin-top: 0.5rem; }
+
+</style>
+        
     </style>
 </head>
 <body>
@@ -1574,52 +1640,52 @@
     </div>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <h2 class="section-title">Contact & Partenariats</h2>
+<section id="contact" class="contact-section">
+   <h2 class="section-title">Contact & Partenariats</h2>
+    
+    <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6;">
+        Vous êtes une entreprise, un influenceur ou souhaitez collaborer ? 
+        Je suis ouvert à tous les partenariats créatifs.
+    </p>
+
+    <div class="social-links">
+        <a href="mailto:Chaymassama@gmail.com" class="social-btn" style="background: #EA4335; color: white;">
+            <i class="fas fa-envelope"></i>
+            Chaymassama@gmail.com
+        </a>
         
-        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6;">
-            Vous êtes une entreprise, un influenceur ou souhaitez collaborer ? 
-            Je suis ouvert à tous les partenariats créatifs.
+        <a href="https://instagram.com/Chaymassama" target="_blank" class="social-btn instagram">
+            <i class="fab fa-instagram"></i>
+            @Chaymassama
+        </a>
+        
+        <a href="https://youtube.com/@Chaymassama" target="_blank" class="social-btn youtube">
+            <i class="fab fa-youtube"></i>
+            Chaymassama
+        </a>
+    </div>
+
+    <div class="contact-info">
+        <p style="margin-bottom: 0.5rem;">
+            <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
+            Pour toute collaboration ou partenariat :
         </p>
+        <a href="tel:+32486779196" class="phone-number" title="Cliquez pour appeler">
+            <i class="fas fa-phone-alt"></i> 0486 77 91 96
+        </a>
+        <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
+            <i class="fas fa-mobile-alt"></i> Cliquez pour appeler directement
+        </p>
+    </div>
 
-        <div class="social-links">
-            <a href="mailto:Chaymassama@gmail.com" class="social-btn" style="background: #EA4335; color: white;">
-                <i class="fas fa-envelope"></i>
-                Chaymassama@gmail.com
-            </a>
-            
-            <a href="https://instagram.com/Chaymassama" target="_blank" class="social-btn instagram">
-                <i class="fab fa-instagram"></i>
-                @Chaymassama
-            </a>
-            
-            <a href="https://youtube.com/@Chaymassama" target="_blank" class="social-btn youtube">
-                <i class="fab fa-youtube"></i>
-                Chaymassama
-            </a>
+    <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+        <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">📍 Zone d'intervention</h3>
+        <p>Disponible en Belgique et à l'international</p>
+        <div class="location-badge">
+            <i class="fas fa-map-marker-alt"></i> Basé en Belgique
         </div>
-
-        <div class="contact-info">
-            <p style="margin-bottom: 0.5rem;">
-                <i class="fas fa-handshake" style="color: var(--deep-blue);"></i> 
-                Pour toute collaboration ou partenariat :
-            </p>
-            <a href="tel:+32486779196" class="phone-number" title="Cliquez pour appeler">
-                <i class="fas fa-phone-alt"></i> 0486 77 91 96
-            </a>
-            <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
-                <i class="fas fa-mobile-alt"></i> Cliquez pour appeler directement
-            </p>
-        </div>
-
-        <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 20px; display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">📍 Zone d'intervention</h3>
-            <p>Disponible en Belgique et à l'international</p>
-            <div class="location-badge">
-                <i class="fas fa-map-marker-alt"></i> Basé en Belgique
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- FOOTER -->
     <footer>
