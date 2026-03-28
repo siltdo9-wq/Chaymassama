@@ -1507,10 +1507,11 @@
                     <label for="duration">Durée du shooting *</label>
                     <select id="duration" name="duration" required onchange="calculateEstimate()">
                         <option value="2">2 heures</option>
-                        <option value="4" selected>4 heures (1/2 journée)</option>
+                        <option value="4" selected>4 heures</option>
                         <option value="6">6 heures</option>
-                        <option value="8">8 heures (Journée)</option>
-                        <option value="12">12 heures (Mariage complet)</option>
+                        <option value="8">8 heures</option>
+                        <option value="10">10 heures</option>
+                        <option value="12">12 heures (journée complète)</option>
                     </select>
                 </div>
 
@@ -1545,9 +1546,9 @@
 
                 <div class="form-group full-width">
                     <div class="estimate-box">
-                        <p>Estimation du devis :</p>
+                        <p id="estimateLabel">Estimation du devis :</p>
                         <div class="estimate-price" id="estimatePrice">150€ - 300€</div>
-                        <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
+                        <p id="estimateNote" style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 0.5rem;">
                             * Prix indicatif, devis final sous 24 h
                         </p>
                     </div>
@@ -1745,6 +1746,7 @@
             let travelCost = travel;
 
             if (type === 'photo') {
+                // Prix fixe: 37.5€/heure
                 basePrice = duration * 37.5;
             } else if (type === 'video') {
                 let editingTime;
@@ -1759,21 +1761,53 @@
                 basePrice = totalHours * 50;
                 if (complexity === 'complexe') basePrice *= 1.2;
             } else { // photo + vidéo
-                basePrice = Math.max(2000, duration * 100);
+                basePrice = duration * 500;
             }
 
-            const minPrice = Math.floor(basePrice + travelCost);
-            const maxPrice = Math.floor(basePrice * 1.2 + travelCost);
+            // Prix fixe pour tous les services
+            const totalPrice = Math.floor(basePrice + travelCost);
+            const displayPrice = totalPrice.toLocaleString('fr-BE') + '€';
 
-            document.getElementById('estimatePrice').textContent =
-                minPrice.toLocaleString('fr-BE') + '€ - ' + maxPrice.toLocaleString('fr-BE') + '€';
+            document.getElementById('estimatePrice').textContent = displayPrice;
         }
 
         document.querySelectorAll('input[name="type"]').forEach(radio => {
-            radio.addEventListener('change', calculateEstimate);
+            radio.addEventListener('change', function() {
+                const type = this.value;
+                const label = document.getElementById('estimateLabel');
+                const note = document.getElementById('estimateNote');
+
+                label.textContent = 'Prix du devis :';
+
+                if (type === 'photo') {
+                    note.innerHTML = '* Prix fixe à 37.5€/heure + déplacement';
+                } else if (type === 'video') {
+                    note.innerHTML = '* Prix fixe selon complexité + déplacement';
+                } else if (type === 'both') {
+                    note.innerHTML = '* Prix fixe à 500€/heure + déplacement';
+                }
+
+                calculateEstimate();
+            });
         });
 
-        window.addEventListener('DOMContentLoaded', calculateEstimate);
+        window.addEventListener('DOMContentLoaded', function() {
+            const type = document.querySelector('input[name="type"]:checked').value;
+            const label = document.getElementById('estimateLabel');
+            const note = document.getElementById('estimateNote');
+
+            label.textContent = 'Prix du devis :';
+
+            if (type === 'photo') {
+                note.innerHTML = '* Prix fixe à 37.5€/heure + déplacement';
+            } else if (type === 'video') {
+                note.innerHTML = '* Prix fixe selon complexité + déplacement';
+            } else if (type === 'both') {
+                note.innerHTML = '* Prix fixe à 500€/heure + déplacement';
+            }
+
+            calculateEstimate();
+        });
 
         // Gestion du formulaire
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
