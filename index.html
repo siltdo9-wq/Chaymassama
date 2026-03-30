@@ -1534,7 +1534,6 @@
                     <select id="photoType" name="photoType" onchange="calculateEstimate()">
                         <option value="mariage" selected>Mariage</option>
                         <option value="normal">Shooting normal (portrait, event, sport...)</option>
-                        <option value="pack">Pack photos (sans shooting - livraison uniquement)</option>
                     </select>
                 </div>
 
@@ -1786,8 +1785,8 @@
                     } else {
                         basePrice = 2800; // 12h+
                     }
-                } else if (photoType === 'normal') {
-                    // Shooting normal: packs photo
+                } else {
+                    // Shooting normal
                     if (duration <= 2) {
                         basePrice = 200; // 2h
                     } else if (duration <= 4) {
@@ -1800,21 +1799,6 @@
                         basePrice = 1000; // 10h
                     } else {
                         basePrice = 1200; // 12h
-                    }
-                } else if (photoType === 'pack') {
-                    // Pack photos sans shooting (livraison uniquement)
-                    if (duration <= 2) {
-                        basePrice = 50; // Pack 10 photos
-                    } else if (duration <= 4) {
-                        basePrice = 100; // Pack 25 photos
-                    } else if (duration <= 6) {
-                        basePrice = 200; // Pack 50 photos
-                    } else if (duration <= 8) {
-                        basePrice = 350; // Pack 75 photos
-                    } else if (duration <= 10) {
-                        basePrice = 500; // Pack 100 photos
-                    } else {
-                        basePrice = 700; // Pack 150 photos
                     }
                 }
             } else if (type === 'video') {
@@ -1907,10 +1891,8 @@ document.getElementById('photoType').addEventListener('change', function() {
 
             if (photoType === 'mariage') {
                 note.innerHTML = '* Mariages: 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
-            } else if (photoType === 'normal') {
+            } else {
                 note.innerHTML = '* Shooting normal: 2h: 200€ | 4h: 400€ | 6h: 600€ | 8h: 800€ | 10h: 1000€ | 12h: 1200€';
-            } else if (photoType === 'pack') {
-                note.innerHTML = '* Pack photos (sans shooting): 10 photos: 50€ | 25 photos: 100€ | 50 photos: 200€ | 75 photos: 350€ | 100 photos: 500€ | 150 photos: 700€';
             }
             calculateEstimate();
         });
