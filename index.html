@@ -1334,24 +1334,38 @@
             <div class="pricing-card">
                 <div class="pricing-header">
                     <h3 class="pricing-title">Formule Photo</h3>
-                    <div class="price">150€<span class="price-unit">/demi-journée</span></div>
+                    <div class="price">200€<span class="price-unit">à partir de</span></div>
                 </div>
                 <ul class="pricing-features">
-                    <li>
-                        <span>Pack 10 photos</span>
-                        <span class="price-tag">50€</span>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">2h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">200€</span>
                     </li>
-                    <li>
-                        <span>Pack 25 photos</span>
-                        <span class="price-tag">100€</span>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">4h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">400€</span>
                     </li>
-                    <li>
-                        <span>Pack 50 photos</span>
-                        <span class="price-tag">200€</span>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">6h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">600€</span>
                     </li>
-                    <li>
-                        <span>Photo supplémentaire</span>
-                        <span class="photo-pack">4€/photo</span>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">8h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">800€</span>
+                    </li>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">10h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">1000€</span>
+                    </li>
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="flex: 1; text-align: left;">Shooting</span>
+                        <span style="flex: 1; text-align: center; font-weight: 600;">12h</span>
+                        <span class="price-tag" style="flex: 1; text-align: right;">1200€</span>
                     </li>
                     <li>
                         <span>Déplacement (30 min de Liège)</span>
@@ -1363,7 +1377,7 @@
                     </li>
                 </ul>
                 <p style="font-size: 0.9rem; color: var(--accent-blue); margin-top: 1rem;">
-                    <i class="fas fa-info-circle"></i> Retouches incluses, livraison numérique HD
+                    <i class="fas fa-info-circle"></i> Portrait, event, sport... Retouches incluses, livraison HD
                 </p>
             </div>
 
@@ -1512,6 +1526,15 @@
                         <option value="8">8 heures</option>
                         <option value="10">10 heures</option>
                         <option value="12">12 heures (journée complète)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="photoTypeGroup" style="display: none;">
+                    <label for="photoType">Type de formule Photo *</label>
+                    <select id="photoType" name="photoType" onchange="calculateEstimate()">
+                        <option value="mariage" selected>Mariage</option>
+                        <option value="normal">Shooting normal (portrait, event, sport...)</option>
+                        <option value="pack">Pack photos (sans shooting - livraison uniquement)</option>
                     </select>
                 </div>
 
@@ -1746,8 +1769,54 @@
             let travelCost = travel;
 
             if (type === 'photo') {
-                // Prix fixe: 37.5€/heure
-                basePrice = duration * 37.5;
+                const photoType = document.getElementById('photoType').value;
+
+                if (photoType === 'mariage') {
+                    // Prix fixes pour mariage
+                    if (duration <= 3) {
+                        basePrice = 800; // Petit mariage (2-3h)
+                    } else if (duration <= 5) {
+                        basePrice = 1200; // Demi-journée (4-5h)
+                    } else if (duration <= 7) {
+                        basePrice = 1600; // 6-7h
+                    } else if (duration <= 9) {
+                        basePrice = 2000; // 8-9h
+                    } else if (duration <= 11) {
+                        basePrice = 2400; // 10-11h
+                    } else {
+                        basePrice = 2800; // 12h+
+                    }
+                } else if (photoType === 'normal') {
+                    // Shooting normal: packs photo
+                    if (duration <= 2) {
+                        basePrice = 200; // 2h
+                    } else if (duration <= 4) {
+                        basePrice = 400; // 4h
+                    } else if (duration <= 6) {
+                        basePrice = 600; // 6h
+                    } else if (duration <= 8) {
+                        basePrice = 800; // 8h
+                    } else if (duration <= 10) {
+                        basePrice = 1000; // 10h
+                    } else {
+                        basePrice = 1200; // 12h
+                    }
+                } else if (photoType === 'pack') {
+                    // Pack photos sans shooting (livraison uniquement)
+                    if (duration <= 2) {
+                        basePrice = 50; // Pack 10 photos
+                    } else if (duration <= 4) {
+                        basePrice = 100; // Pack 25 photos
+                    } else if (duration <= 6) {
+                        basePrice = 200; // Pack 50 photos
+                    } else if (duration <= 8) {
+                        basePrice = 350; // Pack 75 photos
+                    } else if (duration <= 10) {
+                        basePrice = 500; // Pack 100 photos
+                    } else {
+                        basePrice = 700; // Pack 150 photos
+                    }
+                }
             } else if (type === 'video') {
                 let editingTime;
                 if (duration <= 2) {
@@ -1776,14 +1845,27 @@
                 const type = this.value;
                 const label = document.getElementById('estimateLabel');
                 const note = document.getElementById('estimateNote');
+                const photoTypeGroup = document.getElementById('photoTypeGroup');
+                const complexitySelect = document.getElementById('complexity');
 
                 label.textContent = 'Prix du devis :';
 
                 if (type === 'photo') {
-                    note.innerHTML = '* Prix fixe à 37.5€/heure + déplacement';
+                    complexitySelect.options[0].text = 'Simple (Montage simple)';
+                    photoTypeGroup.style.display = 'block';
+                    const photoType = document.getElementById('photoType').value;
+                    if (photoType === 'mariage') {
+                        note.innerHTML = '* Mariages: 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
+                    } else {
+                        note.innerHTML = '* Shooting normal: packs photos selon durée';
+                    }
                 } else if (type === 'video') {
+                    complexitySelect.options[0].text = 'Simple (Reel Instagram basique)';
+                    photoTypeGroup.style.display = 'none';
                     note.innerHTML = '* Prix fixe selon complexité + déplacement';
                 } else if (type === 'both') {
+                    complexitySelect.options[0].text = 'Simple (Reel Instagram basique)';
+                    photoTypeGroup.style.display = 'none';
                     note.innerHTML = '* Prix fixe à 500€/heure + déplacement';
                 }
 
@@ -1795,14 +1877,22 @@
             const type = document.querySelector('input[name="type"]:checked').value;
             const label = document.getElementById('estimateLabel');
             const note = document.getElementById('estimateNote');
+            const complexitySelect = document.getElementById('complexity');
+            const photoTypeGroup = document.getElementById('photoTypeGroup');
 
             label.textContent = 'Prix du devis :';
 
             if (type === 'photo') {
-                note.innerHTML = '* Prix fixe à 37.5€/heure + déplacement';
+                complexitySelect.options[0].text = 'Simple (Montage simple)';
+                photoTypeGroup.style.display = 'block';
+                note.innerHTML = '* 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
             } else if (type === 'video') {
+                complexitySelect.options[0].text = 'Simple (Reel Instagram basique)';
+                photoTypeGroup.style.display = 'none';
                 note.innerHTML = '* Prix fixe selon complexité + déplacement';
             } else if (type === 'both') {
+                complexitySelect.options[0].text = 'Simple (Reel Instagram basique)';
+                photoTypeGroup.style.display = 'none';
                 note.innerHTML = '* Prix fixe à 500€/heure + déplacement';
             }
 
@@ -1810,7 +1900,22 @@
         });
 
         // Gestion du formulaire
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        // Écouteur pour le changement de type de photo
+document.getElementById('photoType').addEventListener('change', function() {
+            const photoType = this.value;
+            const note = document.getElementById('estimateNote');
+
+            if (photoType === 'mariage') {
+                note.innerHTML = '* Mariages: 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
+            } else if (photoType === 'normal') {
+                note.innerHTML = '* Shooting normal: 2h: 200€ | 4h: 400€ | 6h: 600€ | 8h: 800€ | 10h: 1000€ | 12h: 1200€';
+            } else if (photoType === 'pack') {
+                note.innerHTML = '* Pack photos (sans shooting): 10 photos: 50€ | 25 photos: 100€ | 50 photos: 200€ | 75 photos: 350€ | 100 photos: 500€ | 150 photos: 700€';
+            }
+            calculateEstimate();
+        });
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const successMsg = document.getElementById('successMessage');
