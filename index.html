@@ -1153,6 +1153,7 @@
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -1461,16 +1462,36 @@
                 </div>
                 <ul class="pricing-features">
                     <li>
-                        <span>Cérémonie seule (2-4h)</span>
-                        <span class="price-tag">800€</span>
+                        <span>Photo - Cérémonie (2-3h)</span>
+                        <span class="price-tag">250€</span>
                     </li>
                     <li>
-                        <span>Journée complète (8h+)</span>
-                        <span class="price-tag">2000€</span>
+                        <span>Photo - Demi-journée (4-5h)</span>
+                        <span class="price-tag">400€</span>
+                    </li>
+                    <li>
+                        <span>Photo - 6h</span>
+                        <span class="price-tag">600€</span>
+                    </li>
+                    <li>
+                        <span>Photo - 8h</span>
+                        <span class="price-tag">750€</span>
+                    </li>
+                    <li>
+                        <span>Photo - 10h</span>
+                        <span class="price-tag">900€</span>
+                    </li>
+                    <li>
+                        <span>Photo - Journée complète (12h)</span>
+                        <span class="price-tag">1000€</span>
+                    </li>
+                    <li>
+                        <span>Vidéo Mariage</span>
+                        <span class="price-tag">Sur devis</span>
                     </li>
                     <li>
                         <span>Photo + Vidéo</span>
-                        <span class="price-tag">4000€</span>
+                        <span class="price-tag">Sur devis</span>
                     </li>
                     <li>
                         <span>Livre photo</span>
@@ -1795,19 +1816,19 @@
                 const eventType = document.getElementById('eventType').value;
 
                 if (eventType === 'mariage') {
-                    // Prix fixes pour mariage
+                    // Prix fixes pour mariage (max 1000€ pour 12h)
                     if (duration <= 3) {
-                        basePrice = 800; // Petit mariage (2-3h)
+                        basePrice = 250; // Petit mariage (2-3h)
                     } else if (duration <= 5) {
-                        basePrice = 1200; // Demi-journée (4-5h)
+                        basePrice = 400; // Demi-journée (4-5h)
                     } else if (duration <= 7) {
-                        basePrice = 1600; // 6-7h
+                        basePrice = 600; // 6-7h
                     } else if (duration <= 9) {
-                        basePrice = 2000; // 8-9h
+                        basePrice = 750; // 8-9h
                     } else if (duration <= 11) {
-                        basePrice = 2400; // 10-11h
+                        basePrice = 900; // 10-11h
                     } else {
-                        basePrice = 2800; // 12h+
+                        basePrice = 1000; // 12h
                     }
                 } else {
                     // Shooting normal
@@ -1899,7 +1920,7 @@
                 if (eventType === 'normal') {
                     note.innerHTML = '* Shooting normal: 2h: 200€ | 4h: 400€ | 6h: 600€ | 8h: 800€ | 10h: 1000€ | 12h: 1200€';
                 } else {
-                    note.innerHTML = '* Mariages Photo: 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
+                    note.innerHTML = '* Mariages Photo: 2-3h: 250€ | 4-5h: 400€ | 6-7h: 600€ | 8-9h: 750€ | 10-11h: 900€ | 12h: 1000€';
                 }
             } else if (type === 'video') {
                 complexitySelect.options[0].text = 'Simple (Reel Instagram basique)';
@@ -1931,7 +1952,7 @@ document.getElementById('eventType').addEventListener('change', function() {
                 if (eventType === 'normal') {
                     note.innerHTML = '* Shooting normal: 2h: 200€ | 4h: 400€ | 6h: 600€ | 8h: 800€ | 10h: 1000€ | 12h: 1200€';
                 } else {
-                    note.innerHTML = '* Mariages Photo: 2-3h: 800€ | 4-5h: 1200€ | 6-7h: 1600€ | 8-9h: 2000€ | 10-11h: 2400€ | 12h: 2800€';
+                    note.innerHTML = '* Mariages Photo: 2-3h: 250€ | 4-5h: 400€ | 6-7h: 600€ | 8-9h: 750€ | 10-11h: 900€ | 12h: 1000€';
                 }
             } else if (type === 'video') {
                 if (eventType === 'normal') {
